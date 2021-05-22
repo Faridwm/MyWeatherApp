@@ -3,11 +3,9 @@ package com.fwmubarok.tugas3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.fwmubarok.tugas3.Model.CurrentWeather.CurrWeather;
-import com.fwmubarok.tugas3.Model.CurrentWeather.Current;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,9 +14,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private String base_url = "http://api.weatherapi.com/v1/";
-    private String API_KEY = "adc231cf04b14d1381d62047212005";
-    private String CITY_NAME = "Jakarta";
 
     //Text View
     private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update;
@@ -40,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         tv_temp = findViewById(R.id.current_temp_c);
         tv_last_update = findViewById(R.id.current_last_update);
 
+        String base_url = "http://api.weatherapi.com/v1/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(base_url)
                 .addConverterFactory(GsonConverterFactory.create())
