@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Tugas3</string>
+    <string name="current">Current</string>
+    <string name="wind_kph">wind_kph</string>
+    <string name="city">City</string>
+    <string name="pressure_mb">pressure_mb</string>
+    <string name="precip_mm">precip_mm</string>
+    <string name="humidity">humidity</string>
+    <string name="cloud">cloud</string>
+    <string name="gust_kph">gust_kph</string>
+    <string name="condition_text">condition_text</string>
+    <string name="temp_c">temp_c</string>
+    <string name="last_update">last_update</string>
 </resources>
