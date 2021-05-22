@@ -17,6 +17,7 @@
         />
 
     <TextView
+        android:id="@+id/current_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -24,6 +25,7 @@
         />
 
     <TextView
+        android:id="@+id/current_wind_kph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -31,6 +33,7 @@
         />
 
     <TextView
+        android:id="@+id/current_pressure_mb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -38,6 +41,7 @@
         />
 
     <TextView
+       android:id="@+id/current_precip_m"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -45,6 +49,7 @@
         />
 
     <TextView
+        android:id="@+id/current_humidity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -52,6 +57,7 @@
         />
 
     <TextView
+        android:id="@+id/current_cloud"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -59,6 +65,7 @@
         />
 
     <TextView
+        android:id="@+id/current_gust_kph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -66,6 +73,7 @@
         />
 
     <TextView
+        android:id="@+id/current_condition_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -73,6 +81,7 @@
         />
 
     <TextView
+        android:id="@+id/current_temp_c"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -80,6 +89,7 @@
         />
 
     <TextView
+        android:id="@+id/current_last_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
