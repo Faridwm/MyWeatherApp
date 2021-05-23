@@ -1,7 +1,6 @@
-package com.fwmubarok.tugas3;
+package com.fwmubarok.myforecastweather;
 
-import com.fwmubarok.tugas3.Model.CurrentWeather.CurrWeather;
-import com.fwmubarok.tugas3.Model.CurrentWeather.Current;
+import com.fwmubarok.myforecastweather.Model.CurrentWeather.CurrWeather;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

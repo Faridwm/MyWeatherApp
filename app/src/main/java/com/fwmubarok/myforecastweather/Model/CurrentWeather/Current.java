@@ -1,4 +1,4 @@
-package com.fwmubarok.tugas3.Model.CurrentWeather;
+package com.fwmubarok.myforecastweather.Model.CurrentWeather;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,11 +1,11 @@
-package com.fwmubarok.tugas3;
+package com.fwmubarok.myforecastweather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.fwmubarok.tugas3.Model.CurrentWeather.CurrWeather;
+import com.fwmubarok.myforecastweather.Model.CurrentWeather.CurrWeather;
 
 import retrofit2.Call;
 import retrofit2.Callback;
