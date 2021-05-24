@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tugas3</string>
+    <string name="app_name">MyForecastWeather</string>
     <string name="current">Current</string>
     <string name="wind_kph">wind_kph</string>
     <string name="city">City</string>
