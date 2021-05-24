@@ -12,7 +12,7 @@ public class ForecastDay {
 
     @SerializedName("date_epoch")
     @Expose
-    private Integer dateEpoch;
+    private long dateEpoch;
 
     @SerializedName("day")
     @Expose
@@ -34,7 +34,7 @@ public class ForecastDay {
         this.date = date;
     }
 
-    public Integer getDateEpoch() {
+    public long getDateEpoch() {
         return dateEpoch;
     }
 

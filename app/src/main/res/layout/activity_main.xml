@@ -112,9 +112,9 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_forecast"
+        android:id="@+id/rv_forecast_days"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
