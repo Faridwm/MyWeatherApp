@@ -11,4 +11,6 @@
     <string name="condition_text">condition_text</string>
     <string name="temp_c">temp_c</string>
     <string name="last_update">last_update</string>
+    <string name="todo">TODO</string>
+    <string name="day_name">Day Name</string>
 </resources>

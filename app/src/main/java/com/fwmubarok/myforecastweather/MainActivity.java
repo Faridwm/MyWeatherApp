@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.fwmubarok.myforecastweather.Model.CurrentWeather.CurrWeather;
+import com.fwmubarok.myforecastweather.Model.CurrentWeather;
+import com.fwmubarok.myforecastweather.My_interface.WeatherData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,6 +15,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final String API_KEY = "adc231cf04b14d1381d62047212005";
+    private String CITY = "Jakarta";
 
     //Text View
     private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update;
@@ -41,19 +45,19 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        GetCurrentWeatherData currentWeatherData = retrofit.create(GetCurrentWeatherData.class);
+        WeatherData currentWeatherData = retrofit.create(WeatherData.class);
 
-        Call<CurrWeather> call = currentWeatherData.getCurrentWeather();
+        Call<CurrentWeather> call = currentWeatherData.getCurrentWeather(API_KEY, CITY, "no");
 
-        call.enqueue(new Callback<CurrWeather>() {
+        call.enqueue(new Callback<CurrentWeather>() {
             @Override
-            public void onResponse(Call<CurrWeather> call, Response<CurrWeather> response) {
+            public void onResponse(Call<CurrentWeather> call, Response<CurrentWeather> response) {
                 if (!response.isSuccessful()){
                     tv_city.setText("Code: " + response.code());
                     return;
                 }
 
-                CurrWeather currWeather = response.body();
+                CurrentWeather currWeather = response.body();
                 tv_city.setText(currWeather.getLocation().getName());
                 tv_wind.setText(Double.toString(currWeather.getCurrent().getWind_kph()));
                 tv_pressure.setText(Double.toString(currWeather.getCurrent().getPressure_mb()));
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CurrWeather> call, Throwable t) {
+            public void onFailure(Call<CurrentWeather> call, Throwable t) {
                 tv_city.setText(t.getMessage());
             }
         });

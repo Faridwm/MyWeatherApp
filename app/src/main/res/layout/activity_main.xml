@@ -5,95 +5,119 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/layout_current_weather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        android:text="@string/current"
-        />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/current_city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/city"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="@string/current"
+            />
+        <TextView
+            android:id="@+id/current_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/city"
+            />
 
-    <TextView
-        android:id="@+id/current_wind_kph"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/wind_kph"
-        />
+        <TextView
+            android:id="@+id/current_wind_kph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/wind_kph"
+            />
 
-    <TextView
-        android:id="@+id/current_pressure_mb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/pressure_mb"
-        />
+        <TextView
+            android:id="@+id/current_pressure_mb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/pressure_mb"
+            />
 
-    <TextView
-       android:id="@+id/current_precip_m"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/precip_mm"
-        />
+        <TextView
+            android:id="@+id/current_precip_m"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/precip_mm"
+            />
 
-    <TextView
-        android:id="@+id/current_humidity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/humidity"
-        />
+        <TextView
+            android:id="@+id/current_humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/humidity"
+            />
 
-    <TextView
-        android:id="@+id/current_cloud"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/cloud"
-        />
+        <TextView
+            android:id="@+id/current_cloud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/cloud"
+            />
 
-    <TextView
-        android:id="@+id/current_gust_kph"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/gust_kph"
-        />
+        <TextView
+            android:id="@+id/current_gust_kph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/gust_kph"
+            />
 
-    <TextView
-        android:id="@+id/current_condition_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/condition_text"
-        />
+        <TextView
+            android:id="@+id/current_condition_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/condition_text"
+            />
 
-    <TextView
-        android:id="@+id/current_temp_c"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/temp_c"
-        />
+        <TextView
+            android:id="@+id/current_temp_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/temp_c"
+            />
 
-    <TextView
-        android:id="@+id/current_last_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/last_update"
-        />
+        <TextView
+            android:id="@+id/current_last_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/last_update"
+            />
+
+        <ImageView
+            android:id="@+id/current_condition_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/todo"
+            android:layout_gravity="center"
+            tools:src="@tools:sample/avatars"
+            />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_column_forecast" />
 
 </LinearLayout>
