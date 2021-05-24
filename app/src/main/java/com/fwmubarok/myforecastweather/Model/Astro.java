@@ -1,9 +1,12 @@
 package com.fwmubarok.myforecastweather.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Astro {
+public class Astro implements Parcelable {
     @SerializedName("sunrise")
     @Expose
     private String sunrise;
@@ -22,6 +25,27 @@ public class Astro {
     @SerializedName("moon_illumination")
     @Expose
     private String moon_illumination;
+
+    protected Astro(Parcel in) {
+        sunrise = in.readString();
+        sunset = in.readString();
+        moonrise = in.readString();
+        moonset = in.readString();
+        moon_phase = in.readString();
+        moon_illumination = in.readString();
+    }
+
+    public static final Creator<Astro> CREATOR = new Creator<Astro>() {
+        @Override
+        public Astro createFromParcel(Parcel in) {
+            return new Astro(in);
+        }
+
+        @Override
+        public Astro[] newArray(int size) {
+            return new Astro[size];
+        }
+    };
 
     public String getSunrise() {
         return sunrise;
@@ -69,5 +93,20 @@ public class Astro {
 
     public void setMoon_illumination(String moon_illumination) {
         this.moon_illumination = moon_illumination;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(sunrise);
+        dest.writeString(sunset);
+        dest.writeString(moonrise);
+        dest.writeString(moonset);
+        dest.writeString(moon_phase);
+        dest.writeString(moon_illumination);
     }
 }

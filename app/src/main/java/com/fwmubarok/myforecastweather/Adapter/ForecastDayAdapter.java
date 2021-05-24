@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.fwmubarok.myforecastweather.CustomOnItemClickListener;
 import com.fwmubarok.myforecastweather.Model.ForecastDay;
 import com.fwmubarok.myforecastweather.R;
 
@@ -57,6 +58,12 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
             Glide.with(holder.itemView.getContext())
                     .load("https:" + forecastDay.getDay().getCondition().getIcon())
                     .into(holder.iv_forecast_day);
+
+            //On Click
+            holder.itemView.setOnClickListener(new CustomOnItemClickListener(position, (view, position1) -> {
+
+            }));
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
