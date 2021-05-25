@@ -1,5 +1,7 @@
 package com.fwmubarok.myforecastweather.Adapter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.fwmubarok.myforecastweather.CustomOnItemClickListener;
+import com.fwmubarok.myforecastweather.ForecastWeatherDayActivity;
 import com.fwmubarok.myforecastweather.Model.ForecastDay;
 import com.fwmubarok.myforecastweather.R;
 
@@ -24,9 +27,32 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
     private final int item_count = 3;
 
     private List<ForecastDay> forecastDays;
+    private Activity activity;
+    private String city;
 
-    public ForecastDayAdapter(List<ForecastDay> forecastDays) {
+
+//    public ForecastDayAdapter(List<ForecastDay> forecastDays) {
+//        this.forecastDays = forecastDays;
+//    }
+
+    public ForecastDayAdapter(Activity activity) {
+        this.activity = activity;
+    }
+
+    public List<ForecastDay> getForecastDays() {
+        return forecastDays;
+    }
+
+    public void setForecastDays(List<ForecastDay> forecastDays) {
         this.forecastDays = forecastDays;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     @NonNull
@@ -38,10 +64,11 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ForecastDayAdapter.ListViewHolder holder, int position) {
-        ForecastDay forecastDay = forecastDays.get(position);
+        ForecastDay forecastDay = getForecastDays().get(position);
         String sDate = forecastDay.getDate();
+        String day = null;
         try {
-            String day;
+
             Date ndate = new Date();
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
             if (ndate.compareTo(date) != 1) {
@@ -50,34 +77,34 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
             else {
                 day = "Today";
             }
-
-            holder.tv_day_name.setText(day);
-            holder.tv_condition_text.setText(forecastDay.getDay().getCondition().getText());
-            holder.tv_temp_c.setText(Double.toString(forecastDay.getDay().getAvg_tempC()) + "\u00B0C");
-
-            Glide.with(holder.itemView.getContext())
-                    .load("https:" + forecastDay.getDay().getCondition().getIcon())
-                    .into(holder.iv_forecast_day);
-
-            //On Click
-            holder.itemView.setOnClickListener(new CustomOnItemClickListener(position, (view, position1) -> {
-
-            }));
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
+        holder.tv_day_name.setText(day);
+        holder.tv_condition_text.setText(forecastDay.getDay().getCondition().getText());
+        holder.tv_temp_c.setText(forecastDay.getDay().getAvg_tempC() + "\u00B0C");
 
+        Glide.with(holder.itemView.getContext())
+                .load("https:" + forecastDay.getDay().getCondition().getIcon())
+                .into(holder.iv_forecast_day);
+
+        //On Click
+        holder.itemView.setOnClickListener(new CustomOnItemClickListener(position, (view, position1) -> {
+            Intent intent = new Intent(activity, ForecastWeatherDayActivity.class);
+            intent.putExtra(ForecastWeatherDayActivity.EXTRA_FORECAST_DAY, forecastDays.get(position1));
+            intent.putExtra(ForecastWeatherDayActivity.EXTRA_CITY, getCity());
+            activity.startActivity(intent);
+        }));
     }
 
     @Override
     public int getItemCount() {
-        if (forecastDays.size() > item_count) {
+        if (getForecastDays().size() > item_count) {
             return item_count;
         }
         else {
-            return forecastDays.size();
+            return getForecastDays().size();
         }
     }
 

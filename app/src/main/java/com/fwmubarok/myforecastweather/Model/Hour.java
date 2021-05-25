@@ -19,6 +19,10 @@ public class Hour implements Parcelable {
     @Expose
     private Double temp_c;
 
+    @SerializedName("feelslike_c")
+    @Expose
+    private Double feelslike_c;
+
     @SerializedName("condition")
     @Expose
     private Condition condition;
@@ -43,6 +47,13 @@ public class Hour implements Parcelable {
     @Expose
     private Double gust_kph;
 
+    @SerializedName("will_it_rain")
+    @Expose
+    private Integer will_it_rain;
+
+    @SerializedName("chance_of_rain")
+    @Expose
+    private String chance_of_rain;
 
     protected Hour(Parcel in) {
         if (in.readByte() == 0) {
@@ -56,6 +67,12 @@ public class Hour implements Parcelable {
         } else {
             temp_c = in.readDouble();
         }
+        if (in.readByte() == 0) {
+            feelslike_c = null;
+        } else {
+            feelslike_c = in.readDouble();
+        }
+        condition = in.readParcelable(Condition.class.getClassLoader());
         if (in.readByte() == 0) {
             wind_kph = null;
         } else {
@@ -81,6 +98,12 @@ public class Hour implements Parcelable {
         } else {
             gust_kph = in.readDouble();
         }
+        if (in.readByte() == 0) {
+            will_it_rain = null;
+        } else {
+            will_it_rain = in.readInt();
+        }
+        chance_of_rain = in.readString();
     }
 
     public static final Creator<Hour> CREATOR = new Creator<Hour>() {
@@ -117,6 +140,14 @@ public class Hour implements Parcelable {
 
     public void setTemp_c(Double temp_c) {
         this.temp_c = temp_c;
+    }
+
+    public Double getFeelslike_c() {
+        return feelslike_c;
+    }
+
+    public void setFeelslike_c(Double feelslike_c) {
+        this.feelslike_c = feelslike_c;
     }
 
     public Condition getCondition() {
@@ -167,6 +198,22 @@ public class Hour implements Parcelable {
         this.gust_kph = gust_kph;
     }
 
+    public Integer getWill_it_rain() {
+        return will_it_rain;
+    }
+
+    public void setWill_it_rain(Integer will_it_rain) {
+        this.will_it_rain = will_it_rain;
+    }
+
+    public String getChance_of_rain() {
+        return chance_of_rain;
+    }
+
+    public void setChance_of_rain(String chance_of_rain) {
+        this.chance_of_rain = chance_of_rain;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -187,6 +234,13 @@ public class Hour implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeDouble(temp_c);
         }
+        if (feelslike_c == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(feelslike_c);
+        }
+        dest.writeParcelable(condition, flags);
         if (wind_kph == null) {
             dest.writeByte((byte) 0);
         } else {
@@ -217,5 +271,12 @@ public class Hour implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeDouble(gust_kph);
         }
+        if (will_it_rain == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(will_it_rain);
+        }
+        dest.writeString(chance_of_rain);
     }
 }

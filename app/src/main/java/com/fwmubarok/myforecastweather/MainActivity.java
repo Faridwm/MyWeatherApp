@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     //Recycle View
     private RecyclerView rv_forecast_days;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,7 +138,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerList() {
         rv_forecast_days.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        ForecastDayAdapter forecastDayAdapter = new ForecastDayAdapter(list_forecast_days);
+        ForecastDayAdapter forecastDayAdapter = new ForecastDayAdapter(MainActivity.this);
+        forecastDayAdapter.setForecastDays(list_forecast_days);
+        forecastDayAdapter.setCity(CITY);
         rv_forecast_days.setAdapter(forecastDayAdapter);
     }
 }

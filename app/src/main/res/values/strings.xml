@@ -13,4 +13,9 @@
     <string name="last_update">last_update</string>
     <string name="todo">TODO</string>
     <string name="day_name">Day Name</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="time">Time</string>
+    <string name="chance_rain">Chance Rain</string>
+    <string name="will_rain">Will Rain</string>
 </resources>

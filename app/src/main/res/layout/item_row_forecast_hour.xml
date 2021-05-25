@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/img_forehour_condition_icon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="16dp"
+        tools:src="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_forehour_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/time" />
+
+        <TextView
+            android:id="@+id/tv_forehour_condition_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/condition_text" />
+
+        <TextView
+            android:id="@+id/tv_forehour_temp_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_c" />
+
+        <TextView
+            android:id="@+id/tv_forehour_feelslike_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_c" />
+
+        <TextView
+            android:id="@+id/tv_forehour_will_rain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/will_rain" />
+
+        <TextView
+            android:id="@+id/tv_forehour_chance_rain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/chance_rain" />
+    </LinearLayout>
+</LinearLayout>

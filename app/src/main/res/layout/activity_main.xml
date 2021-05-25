@@ -103,8 +103,8 @@
 
         <ImageView
             android:id="@+id/current_condition_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:contentDescription="@string/todo"
             android:layout_gravity="center"
             tools:src="@tools:sample/avatars"

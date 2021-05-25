@@ -1,9 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ForecastWeatherDayActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_foreday_day_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:text="@string/day_name"
+        />
+
+    <ImageView
+        android:id="@+id/img_foreday_condition_icon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:contentDescription="@string/todo"
+        android:layout_gravity="center"
+        tools:src="@tools:sample/avatars"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_condition_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/condition_text"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/city"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_maxwind_kph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/wind_kph"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_precip_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/precip_mm"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_temp_c_min"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/temp_c"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_temp_c_max"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/temp_c"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_temp_c_avg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/temp_c"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_astro_sunrise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sunrise"
+        />
+
+    <TextView
+        android:id="@+id/tv_foreday_astro_sunset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sunset"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_forecast_hours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_row_forecast_hour" />
+
+</LinearLayout>
