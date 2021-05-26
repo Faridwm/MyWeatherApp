@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         tv_city = findViewById(R.id.current_city);
         tv_wind = findViewById(R.id.current_wind_kph);
         tv_pressure = findViewById(R.id.current_pressure_mb);
-        tv_precip = findViewById(R.id.current_precip_m);
+        tv_precip = findViewById(R.id.current_precip_mm);
         tv_humidity = findViewById(R.id.current_humidity);
         tv_cloud = findViewById(R.id.current_cloud);
         tv_gust = findViewById(R.id.current_gust_kph);
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 tv_cloud.setText(Integer.toString(forecastWeather.getCurrent().getCloud()));
                 tv_gust.setText(Double.toString(forecastWeather.getCurrent().getGust_kph()));
                 tv_condition_text.setText(forecastWeather.getCurrent().getCondition().getText());
-                tv_temp.setText(Double.toString(forecastWeather.getCurrent().getTemp_c()));
+                tv_temp.setText(forecastWeather.getCurrent().getTemp_c() + "\u00B0C");
                 tv_last_update.setText(forecastWeather.getCurrent().getLast_updated());
 
 

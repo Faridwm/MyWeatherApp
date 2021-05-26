@@ -5,8 +5,8 @@
     <string name="city">City</string>
     <string name="pressure_mb">pressure_mb</string>
     <string name="precip_mm">precip_mm</string>
-    <string name="humidity">humidity</string>
-    <string name="cloud">cloud</string>
+    <string name="humidity">Humidity</string>
+    <string name="cloud">Cloud</string>
     <string name="gust_kph">gust_kph</string>
     <string name="condition_text">condition_text</string>
     <string name="temp_c">temp_c</string>
@@ -18,4 +18,8 @@
     <string name="time">Time</string>
     <string name="chance_rain">Chance Rain</string>
     <string name="will_rain">Will Rain</string>
+    <string name="wind">Wind</string>
+    <string name="pressure">Pressure</string>
+    <string name="precipation">Precipation</string>
+    <string name="gust">Gust</string>
 </resources>
