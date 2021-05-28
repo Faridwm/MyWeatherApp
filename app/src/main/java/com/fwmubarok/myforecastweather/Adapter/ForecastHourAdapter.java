@@ -14,7 +14,11 @@ import com.bumptech.glide.Glide;
 import com.fwmubarok.myforecastweather.Model.Hour;
 import com.fwmubarok.myforecastweather.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ForecastHourAdapter extends RecyclerView.Adapter<ForecastHourAdapter.ListViewHolder> {
 
@@ -43,7 +47,14 @@ public class ForecastHourAdapter extends RecyclerView.Adapter<ForecastHourAdapte
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Hour hour = getHours().get(position);
-        holder.tv_time.setText(hour.getTime());
+
+        String dt = hour.getTime();
+        String[] date_time = dt.split(" ");
+        String time_hour = date_time[1];
+
+
+
+        holder.tv_time.setText(time_hour);
         holder.tv_cond_text.setText(hour.getCondition().getText());
         holder.tv_temp_c.setText(hour.getTemp_c() + "\u00B0C");
         holder.tv_feelslike_c.setText(hour.getFeelslike_c() + "\u00B0C");

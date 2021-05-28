@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -203,16 +204,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_forecast_days"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="324dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         tools:listitem="@layout/item_column_forecast" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
