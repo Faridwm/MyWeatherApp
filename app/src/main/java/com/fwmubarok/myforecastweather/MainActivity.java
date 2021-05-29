@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.fwmubarok.myforecastweather.Model.CurrentWeather;
 import com.fwmubarok.myforecastweather.Model.ForecastDay;
 import com.fwmubarok.myforecastweather.Model.ForecastWeather;
 import com.fwmubarok.myforecastweather.My_interface.WeatherData;
+import com.fwmubarok.myforecastweather.REST.ApiClient;
 
 import java.util.List;
 
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     private final String API_KEY = "adc231cf04b14d1381d62047212005";
     private String CITY = "Jakarta";
     private List<ForecastDay> list_forecast_days;
+    private static final String TAG = "API ERROR";
+
+    private ApiClient apiClient;
+    private WeatherData weatherData;
 
     //Text View
     private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update;
@@ -59,21 +65,18 @@ public class MainActivity extends AppCompatActivity {
         rv_forecast_days = findViewById(R.id.rv_forecast_days);
         rv_forecast_days.setHasFixedSize(true);
 
-        String base_url = "https://api.weatherapi.com/v1/";
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(base_url)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        weatherData = apiClient.getClient().create(WeatherData.class);
+        getForecastDay();
+    }
 
-        WeatherData weatherData = retrofit.create(WeatherData.class);
-
+    private void getForecastDay() {
         Call<ForecastWeather> call = weatherData.getForecastWeather(API_KEY, CITY, 3, "no", "no");
 
         call.enqueue(new Callback<ForecastWeather>() {
             @Override
             public void onResponse(Call<ForecastWeather> call, Response<ForecastWeather> response) {
                 if (!response.isSuccessful()){
-                    tv_city.setText("Code: " + response.code());
+                    Log.d(TAG, "Code: " + response.code());
                     return;
                 }
 
@@ -100,46 +103,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ForecastWeather> call, Throwable t) {
-                tv_city.setText(t.getMessage());
+                Log.d(TAG, "Message: " + t.getMessage());
             }
         });
-
-//        WeatherData currentWeatherData = retrofit.create(WeatherData.class);
-//
-//        Call<CurrentWeather> call = currentWeatherData.getCurrentWeather(API_KEY, CITY, "no");
-//
-//        call.enqueue(new Callback<CurrentWeather>() {
-//            @Override
-//            public void onResponse(Call<CurrentWeather> call, Response<CurrentWeather> response) {
-//                if (!response.isSuccessful()){
-//                    tv_city.setText("Code: " + response.code());
-//                    return;
-//                }
-//
-//                CurrentWeather currWeather = response.body();
-//                tv_city.setText(currWeather.getLocation().getName());
-//                tv_wind.setText(Double.toString(currWeather.getCurrent().getWind_kph()));
-//                tv_pressure.setText(Double.toString(currWeather.getCurrent().getPressure_mb()));
-//                tv_precip.setText(Double.toString(currWeather.getCurrent().getPrecip_mm()));
-//                tv_humidity.setText(Integer.toString(currWeather.getCurrent().getHumidity()));
-//                tv_cloud.setText(Integer.toString(currWeather.getCurrent().getCloud()));
-//                tv_gust.setText(Double.toString(currWeather.getCurrent().getGust_kph()));
-//                tv_condition_text.setText(currWeather.getCurrent().getCondition().getText());
-//                tv_temp.setText(Double.toString(currWeather.getCurrent().getTemp_c()));
-//                tv_last_update.setText(currWeather.getCurrent().getLast_updated());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<CurrentWeather> call, Throwable t) {
-//                tv_city.setText(t.getMessage());
-//            }
-//        });
     }
 
     private void showRecyclerList() {
         rv_forecast_days.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        ForecastDayAdapter forecastDayAdapter = new ForecastDayAdapter(MainActivity.this);
-        forecastDayAdapter.setForecastDays(list_forecast_days);
+        ForecastDayAdapter forecastDayAdapter = new ForecastDayAdapter(list_forecast_days);
+//        forecastDayAdapter.setForecastDays(list_forecast_days);
         forecastDayAdapter.setCity(CITY);
         rv_forecast_days.setAdapter(forecastDayAdapter);
     }

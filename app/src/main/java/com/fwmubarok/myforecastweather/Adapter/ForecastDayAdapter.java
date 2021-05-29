@@ -27,17 +27,17 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
     private final int item_count = 3;
 
     private List<ForecastDay> forecastDays;
-    private Activity activity;
+//    private Activity activity;
     private String city;
 
 
-//    public ForecastDayAdapter(List<ForecastDay> forecastDays) {
-//        this.forecastDays = forecastDays;
-//    }
-
-    public ForecastDayAdapter(Activity activity) {
-        this.activity = activity;
+    public ForecastDayAdapter(List<ForecastDay> forecastDays) {
+        this.forecastDays = forecastDays;
     }
+
+//    public ForecastDayAdapter(Activity activity) {
+//        this.activity = activity;
+//    }
 
     public List<ForecastDay> getForecastDays() {
         return forecastDays;
@@ -91,10 +91,10 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
 
         //On Click
         holder.itemView.setOnClickListener(new CustomOnItemClickListener(position, (view, position1) -> {
-            Intent intent = new Intent(activity, ForecastWeatherDayActivity.class);
+            Intent intent = new Intent(holder.itemView.getContext(), ForecastWeatherDayActivity.class);
             intent.putExtra(ForecastWeatherDayActivity.EXTRA_FORECAST_DAY, forecastDays.get(position1));
             intent.putExtra(ForecastWeatherDayActivity.EXTRA_CITY, getCity());
-            activity.startActivity(intent);
+            holder.itemView.getContext().startActivity(intent);
         }));
     }
 
