@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 public class Hour implements Parcelable {
     @SerializedName("time_epoch")
     @Expose
-    private Integer time_epoch;
+    private int time_epoch;
 
     @SerializedName("time")
     @Expose
@@ -17,11 +17,11 @@ public class Hour implements Parcelable {
 
     @SerializedName("temp_c")
     @Expose
-    private Double temp_c;
+    private double temp_c;
 
     @SerializedName("feelslike_c")
     @Expose
-    private Double feelslike_c;
+    private double feelslike_c;
 
     @SerializedName("condition")
     @Expose
@@ -29,80 +29,44 @@ public class Hour implements Parcelable {
 
     @SerializedName("wind_kph")
     @Expose
-    private Double wind_kph;
+    private double wind_kph;
 
     @SerializedName("precip_mm")
     @Expose
-    private Double precip_mm;
+    private double precip_mm;
 
     @SerializedName("humidity")
     @Expose
-    private Integer humidity;
+    private int humidity;
 
     @SerializedName("cloud")
     @Expose
-    private Integer cloud;
+    private int cloud;
 
     @SerializedName("gust_kph")
     @Expose
-    private Double gust_kph;
+    private double gust_kph;
 
     @SerializedName("will_it_rain")
     @Expose
-    private Integer will_it_rain;
+    private int will_it_rain;
 
     @SerializedName("chance_of_rain")
     @Expose
     private String chance_of_rain;
 
     protected Hour(Parcel in) {
-        if (in.readByte() == 0) {
-            time_epoch = null;
-        } else {
-            time_epoch = in.readInt();
-        }
+        time_epoch = in.readInt();
         time = in.readString();
-        if (in.readByte() == 0) {
-            temp_c = null;
-        } else {
-            temp_c = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            feelslike_c = null;
-        } else {
-            feelslike_c = in.readDouble();
-        }
+        temp_c = in.readDouble();
+        feelslike_c = in.readDouble();
         condition = in.readParcelable(Condition.class.getClassLoader());
-        if (in.readByte() == 0) {
-            wind_kph = null;
-        } else {
-            wind_kph = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            precip_mm = null;
-        } else {
-            precip_mm = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            humidity = null;
-        } else {
-            humidity = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            cloud = null;
-        } else {
-            cloud = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            gust_kph = null;
-        } else {
-            gust_kph = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            will_it_rain = null;
-        } else {
-            will_it_rain = in.readInt();
-        }
+        wind_kph = in.readDouble();
+        precip_mm = in.readDouble();
+        humidity = in.readInt();
+        cloud = in.readInt();
+        gust_kph = in.readDouble();
+        will_it_rain = in.readInt();
         chance_of_rain = in.readString();
     }
 
@@ -118,11 +82,11 @@ public class Hour implements Parcelable {
         }
     };
 
-    public Integer getTime_epoch() {
+    public int getTime_epoch() {
         return time_epoch;
     }
 
-    public void setTime_epoch(Integer time_epoch) {
+    public void setTime_epoch(int time_epoch) {
         this.time_epoch = time_epoch;
     }
 
@@ -134,19 +98,19 @@ public class Hour implements Parcelable {
         this.time = time;
     }
 
-    public Double getTemp_c() {
+    public double getTemp_c() {
         return temp_c;
     }
 
-    public void setTemp_c(Double temp_c) {
+    public void setTemp_c(double temp_c) {
         this.temp_c = temp_c;
     }
 
-    public Double getFeelslike_c() {
+    public double getFeelslike_c() {
         return feelslike_c;
     }
 
-    public void setFeelslike_c(Double feelslike_c) {
+    public void setFeelslike_c(double feelslike_c) {
         this.feelslike_c = feelslike_c;
     }
 
@@ -158,51 +122,51 @@ public class Hour implements Parcelable {
         this.condition = condition;
     }
 
-    public Double getWind_kph() {
+    public double getWind_kph() {
         return wind_kph;
     }
 
-    public void setWind_kph(Double wind_kph) {
+    public void setWind_kph(double wind_kph) {
         this.wind_kph = wind_kph;
     }
 
-    public Double getPrecip_mm() {
+    public double getPrecip_mm() {
         return precip_mm;
     }
 
-    public void setPrecip_mm(Double precip_mm) {
+    public void setPrecip_mm(double precip_mm) {
         this.precip_mm = precip_mm;
     }
 
-    public Integer getHumidity() {
+    public int getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Integer humidity) {
+    public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
 
-    public Integer getCloud() {
+    public int getCloud() {
         return cloud;
     }
 
-    public void setCloud(Integer cloud) {
+    public void setCloud(int cloud) {
         this.cloud = cloud;
     }
 
-    public Double getGust_kph() {
+    public double getGust_kph() {
         return gust_kph;
     }
 
-    public void setGust_kph(Double gust_kph) {
+    public void setGust_kph(double gust_kph) {
         this.gust_kph = gust_kph;
     }
 
-    public Integer getWill_it_rain() {
+    public int getWill_it_rain() {
         return will_it_rain;
     }
 
-    public void setWill_it_rain(Integer will_it_rain) {
+    public void setWill_it_rain(int will_it_rain) {
         this.will_it_rain = will_it_rain;
     }
 
@@ -221,62 +185,17 @@ public class Hour implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        if (time_epoch == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(time_epoch);
-        }
+        dest.writeInt(time_epoch);
         dest.writeString(time);
-        if (temp_c == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(temp_c);
-        }
-        if (feelslike_c == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(feelslike_c);
-        }
+        dest.writeDouble(temp_c);
+        dest.writeDouble(feelslike_c);
         dest.writeParcelable(condition, flags);
-        if (wind_kph == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(wind_kph);
-        }
-        if (precip_mm == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(precip_mm);
-        }
-        if (humidity == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(humidity);
-        }
-        if (cloud == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(cloud);
-        }
-        if (gust_kph == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(gust_kph);
-        }
-        if (will_it_rain == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(will_it_rain);
-        }
+        dest.writeDouble(wind_kph);
+        dest.writeDouble(precip_mm);
+        dest.writeInt(humidity);
+        dest.writeInt(cloud);
+        dest.writeDouble(gust_kph);
+        dest.writeInt(will_it_rain);
         dest.writeString(chance_of_rain);
     }
 }

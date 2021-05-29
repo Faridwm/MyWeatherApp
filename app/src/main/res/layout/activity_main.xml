@@ -151,7 +151,7 @@
         <TextView
             android:id="@+id/current_condition_text"
             android:layout_width="99dp"
-            android:layout_height="16dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="76dp"
             android:layout_marginTop="3dp"
             android:text="@string/condition_text"

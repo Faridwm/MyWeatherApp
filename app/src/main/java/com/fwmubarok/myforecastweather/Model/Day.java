@@ -9,15 +9,15 @@ import com.google.gson.annotations.SerializedName;
 public class Day implements Parcelable {
     @SerializedName("maxtemp_c")
     @Expose
-    private Double max_tempC;
+    private double max_tempC;
 
     @SerializedName("mintemp_c")
     @Expose
-    private Double min_tempC;
+    private double min_tempC;
 
     @SerializedName("avgtemp_c")
     @Expose
-    private Double avg_tempC;
+    private double avg_tempC;
 
     @SerializedName("condition")
     @Expose
@@ -25,48 +25,24 @@ public class Day implements Parcelable {
 
     @SerializedName("maxwind_kph")
     @Expose
-    private Double maxwind_kph;
+    private double maxwind_kph;
 
     @SerializedName("avghumidity")
     @Expose
-    private Double avghumidity;
+    private double avghumidity;
 
     @SerializedName("totalprecip_mm")
     @Expose
-    private Double totalprecip_mm;
+    private double totalprecip_mm;
 
     protected Day(Parcel in) {
-        if (in.readByte() == 0) {
-            max_tempC = null;
-        } else {
-            max_tempC = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            min_tempC = null;
-        } else {
-            min_tempC = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            avg_tempC = null;
-        } else {
-            avg_tempC = in.readDouble();
-        }
+        max_tempC = in.readDouble();
+        min_tempC = in.readDouble();
+        avg_tempC = in.readDouble();
         condition = in.readParcelable(Condition.class.getClassLoader());
-        if (in.readByte() == 0) {
-            maxwind_kph = null;
-        } else {
-            maxwind_kph = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            avghumidity = null;
-        } else {
-            avghumidity = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            totalprecip_mm = null;
-        } else {
-            totalprecip_mm = in.readDouble();
-        }
+        maxwind_kph = in.readDouble();
+        avghumidity = in.readDouble();
+        totalprecip_mm = in.readDouble();
     }
 
     public static final Creator<Day> CREATOR = new Creator<Day>() {
@@ -81,27 +57,27 @@ public class Day implements Parcelable {
         }
     };
 
-    public Double getMax_tempC() {
+    public double getMax_tempC() {
         return max_tempC;
     }
 
-    public void setMax_tempC(Double max_tempC) {
+    public void setMax_tempC(double max_tempC) {
         this.max_tempC = max_tempC;
     }
 
-    public Double getMin_tempC() {
+    public double getMin_tempC() {
         return min_tempC;
     }
 
-    public void setMin_tempC(Double min_tempC) {
+    public void setMin_tempC(double min_tempC) {
         this.min_tempC = min_tempC;
     }
 
-    public Double getAvg_tempC() {
+    public double getAvg_tempC() {
         return avg_tempC;
     }
 
-    public void setAvg_tempC(Double avg_tempC) {
+    public void setAvg_tempC(double avg_tempC) {
         this.avg_tempC = avg_tempC;
     }
 
@@ -113,27 +89,27 @@ public class Day implements Parcelable {
         this.condition = condition;
     }
 
-    public Double getMaxwind_kph() {
+    public double getMaxwind_kph() {
         return maxwind_kph;
     }
 
-    public void setMaxwind_kph(Double maxwind_kph) {
+    public void setMaxwind_kph(double maxwind_kph) {
         this.maxwind_kph = maxwind_kph;
     }
 
-    public Double getAvghumidity() {
+    public double getAvghumidity() {
         return avghumidity;
     }
 
-    public void setAvghumidity(Double avghumidity) {
+    public void setAvghumidity(double avghumidity) {
         this.avghumidity = avghumidity;
     }
 
-    public Double getTotalprecip_mm() {
+    public double getTotalprecip_mm() {
         return totalprecip_mm;
     }
 
-    public void setTotalprecip_mm(Double totalprecip_mm) {
+    public void setTotalprecip_mm(double totalprecip_mm) {
         this.totalprecip_mm = totalprecip_mm;
     }
 
@@ -144,42 +120,12 @@ public class Day implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        if (max_tempC == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(max_tempC);
-        }
-        if (min_tempC == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(min_tempC);
-        }
-        if (avg_tempC == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(avg_tempC);
-        }
+        dest.writeDouble(max_tempC);
+        dest.writeDouble(min_tempC);
+        dest.writeDouble(avg_tempC);
         dest.writeParcelable(condition, flags);
-        if (maxwind_kph == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(maxwind_kph);
-        }
-        if (avghumidity == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(avghumidity);
-        }
-        if (totalprecip_mm == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(totalprecip_mm);
-        }
+        dest.writeDouble(maxwind_kph);
+        dest.writeDouble(avghumidity);
+        dest.writeDouble(totalprecip_mm);
     }
 }

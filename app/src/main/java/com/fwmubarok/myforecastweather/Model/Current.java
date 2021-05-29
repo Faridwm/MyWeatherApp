@@ -10,7 +10,7 @@ public class Current {
 
     @SerializedName("temp_c")
     @Expose
-    private Double temp_c;
+    private double temp_c;
 
     @SerializedName("condition")
     @Expose
@@ -18,27 +18,27 @@ public class Current {
 
     @SerializedName("wind_kph")
     @Expose
-    private Double wind_kph;
+    private double wind_kph;
 
     @SerializedName("pressure_mb")
     @Expose
-    private Double pressure_mb;
+    private double pressure_mb;
 
     @SerializedName("precip_mm")
     @Expose
-    private Double precip_mm;
+    private double precip_mm;
 
     @SerializedName("humidity")
     @Expose
-    private Integer humidity;
+    private int humidity;
 
     @SerializedName("cloud")
     @Expose
-    private Integer cloud;
+    private int cloud;
 
     @SerializedName("gust_kph")
     @Expose
-    private Double gust_kph;
+    private double gust_kph;
 
     public String getLast_updated() {
         return last_updated;
@@ -48,11 +48,11 @@ public class Current {
         this.last_updated = last_updated;
     }
 
-    public Double getTemp_c() {
+    public double getTemp_c() {
         return temp_c;
     }
 
-    public void setTemp_c(Double temp_c) {
+    public void setTemp_c(double temp_c) {
         this.temp_c = temp_c;
     }
 
@@ -64,51 +64,51 @@ public class Current {
         this.condition = condition;
     }
 
-    public Double getWind_kph() {
+    public double getWind_kph() {
         return wind_kph;
     }
 
-    public void setWind_kph(Double wind_kph) {
+    public void setWind_kph(double wind_kph) {
         this.wind_kph = wind_kph;
     }
 
-    public Double getPressure_mb() {
+    public double getPressure_mb() {
         return pressure_mb;
     }
 
-    public void setPressure_mb(Double pressure_mb) {
+    public void setPressure_mb(double pressure_mb) {
         this.pressure_mb = pressure_mb;
     }
 
-    public Double getPrecip_mm() {
+    public double getPrecip_mm() {
         return precip_mm;
     }
 
-    public void setPrecip_mm(Double precip_mm) {
+    public void setPrecip_mm(double precip_mm) {
         this.precip_mm = precip_mm;
     }
 
-    public Integer getHumidity() {
+    public int getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Integer humidity) {
+    public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
 
-    public Integer getCloud() {
+    public int getCloud() {
         return cloud;
     }
 
-    public void setCloud(Integer cloud) {
+    public void setCloud(int cloud) {
         this.cloud = cloud;
     }
 
-    public Double getGust_kph() {
+    public double getGust_kph() {
         return gust_kph;
     }
 
-    public void setGust_kph(Double gust_kph) {
+    public void setGust_kph(double gust_kph) {
         this.gust_kph = gust_kph;
     }
 }

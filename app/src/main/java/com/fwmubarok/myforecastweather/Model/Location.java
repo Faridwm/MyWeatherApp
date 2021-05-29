@@ -18,11 +18,11 @@ public class Location {
 
     @SerializedName("lat")
     @Expose
-    private Double lat;
+    private double lat;
 
     @SerializedName("lon")
     @Expose
-    private Double lon;
+    private double lon;
 
     @SerializedName("tz_id")
     @Expose
@@ -30,7 +30,7 @@ public class Location {
 
     @SerializedName("localtime_epoch")
     @Expose
-    private Integer localtime_epoch;
+    private int localtime_epoch;
 
     @SerializedName("localtime")
     @Expose
@@ -60,19 +60,19 @@ public class Location {
         this.country = country;
     }
 
-    public Double getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
-    public Double getLon() {
+    public double getLon() {
         return lon;
     }
 
-    public void setLon(Double lon) {
+    public void setLon(double lon) {
         this.lon = lon;
     }
 
@@ -84,11 +84,11 @@ public class Location {
         this.tz_id = tz_id;
     }
 
-    public Integer getLocaltime_epoch() {
+    public int getLocaltime_epoch() {
         return localtime_epoch;
     }
 
-    public void setLocaltime_epoch(Integer localtime_epoch) {
+    public void setLocaltime_epoch(int localtime_epoch) {
         this.localtime_epoch = localtime_epoch;
     }
 

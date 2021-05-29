@@ -22,4 +22,5 @@
     <string name="pressure">Pressure</string>
     <string name="precipation">Precipation</string>
     <string name="gust">Gust</string>
+    <string name="feelslike">Feelslike</string>
 </resources>

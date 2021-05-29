@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Condition implements Parcelable {
+public class Condition implements Parcelable{
     @SerializedName("text")
     @Expose
     private String text;
@@ -15,16 +15,12 @@ public class Condition implements Parcelable {
     private String icon;
     @SerializedName("code")
     @Expose
-    private Integer code;
+    private int code;
 
     protected Condition(Parcel in) {
         text = in.readString();
         icon = in.readString();
-        if (in.readByte() == 0) {
-            code = null;
-        } else {
-            code = in.readInt();
-        }
+        code = in.readInt();
     }
 
     public static final Creator<Condition> CREATOR = new Creator<Condition>() {
@@ -55,11 +51,11 @@ public class Condition implements Parcelable {
         this.icon = icon;
     }
 
-    public Integer getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -72,11 +68,6 @@ public class Condition implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(text);
         dest.writeString(icon);
-        if (code == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(code);
-        }
+        dest.writeInt(code);
     }
 }

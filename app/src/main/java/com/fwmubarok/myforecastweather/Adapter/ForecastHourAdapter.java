@@ -58,8 +58,15 @@ public class ForecastHourAdapter extends RecyclerView.Adapter<ForecastHourAdapte
         holder.tv_cond_text.setText(hour.getCondition().getText());
         holder.tv_temp_c.setText(hour.getTemp_c() + "\u00B0C");
         holder.tv_feelslike_c.setText(hour.getFeelslike_c() + "\u00B0C");
-        holder.tv_chance_rain.setText(hour.getChance_of_rain());
-        holder.tv_will_rain.setText(Integer.toString(hour.getWill_it_rain()));
+        holder.tv_chance_rain.setText(hour.getChance_of_rain() + "%");
+        String w_rain;
+        if (hour.getWill_it_rain() == 1) {
+            w_rain = "YES";
+        }
+        else {
+            w_rain = "NO";
+        }
+        holder.tv_will_rain.setText(w_rain);
 
         Glide.with(holder.itemView.getContext())
                 .load("https:" + hour.getCondition().getIcon())
