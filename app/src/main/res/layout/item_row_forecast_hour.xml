@@ -71,7 +71,7 @@
     <TextView
         android:id="@+id/tv_forehour_time"
         android:layout_width="wrap_content"
-        android:layout_height="22dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/time"
         android:textSize="16sp"
