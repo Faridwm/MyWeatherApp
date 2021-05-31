@@ -108,6 +108,16 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
         }
     }
 
+    public void clear() {
+        forecastDays.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<ForecastDay> list) {
+        forecastDays.addAll(list);
+        notifyDataSetChanged();
+    }
+
     public class ListViewHolder extends RecyclerView.ViewHolder{
         TextView tv_day_name, tv_temp_c, tv_condition_text;
         ImageView iv_forecast_day;

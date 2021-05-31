@@ -3,8 +3,10 @@ package com.fwmubarok.myforecastweather;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     //Recycle View
     private RecyclerView rv_forecast_days;
 
+    //Swipe
+    private SwipeRefreshLayout swipe_c;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +70,23 @@ public class MainActivity extends AppCompatActivity {
         rv_forecast_days = findViewById(R.id.rv_forecast_days);
         rv_forecast_days.setHasFixedSize(true);
 
+        swipe_c = findViewById(R.id.swipe_container);
+
         weatherData = apiClient.getClient().create(WeatherData.class);
         getForecastDay();
+
+        swipe_c.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getForecastDay();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe_c.setRefreshing(false);
+                    }
+                }, 3000);
+            }
+        });
     }
 
     private void getForecastDay() {
