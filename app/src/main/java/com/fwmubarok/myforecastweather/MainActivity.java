@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         weatherApiInterface = apiClient.getClient().create(WeatherApiInterface.class);
 
         getForecastDay();
-//        getHistoryDay();
+        getHistoryDay();
 
         swipe_c.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                         .into(im_current_condition_icon);
 
                 list_forecast_days.addAll(forecastWeather.getForecast().getForecastDay());
-//                list_forecast_days.addAll(getHistoryDay());
                 Log.d("panjang list", Integer.toString(list_forecast_days.size()));
                 showRecyclerList();
             }
@@ -165,8 +164,7 @@ public class MainActivity extends AppCompatActivity {
                         .into(im_current_condition_icon);
 
                 list_forecast_days.addAll(forecastWeather.getForecast().getForecastDay());
-//                list_forecast_days.addAll(getHistoryDay());
-                Log.d("panjang list", Integer.toString(list_forecast_days.size()));
+//                Log.d("panjang list", Integer.toString(list_forecast_days.size()));
                 showRecyclerList();
             }
 
@@ -190,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "Code: " + response.code());
                     return;
                 }
-                forecast_history.addAll(response.body().getForecast().getForecastDay());
+                list_forecast_days.add(0, response.body().getForecast().getForecastDay().get(0));
             }
 
             @Override

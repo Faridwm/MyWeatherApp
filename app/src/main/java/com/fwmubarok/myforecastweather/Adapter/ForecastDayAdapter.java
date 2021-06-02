@@ -66,22 +66,22 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
     public void onBindViewHolder(@NonNull ForecastDayAdapter.ListViewHolder holder, int position) {
         ForecastDay forecastDay = getForecastDays().get(position);
         String sDate = forecastDay.getDate();
-        String day = null;
-        try {
+//        String day = null;
+//        try {
+//
+//            Date ndate = new Date();
+//            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
+//            if (ndate.compareTo(date) != 1) {
+//                day = new SimpleDateFormat("EEEE", Locale.getDefault()).format(date);
+//            }
+//            else {
+//                day = "Today";
+//            }
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
-            Date ndate = new Date();
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
-            if (ndate.compareTo(date) != 1) {
-                day = new SimpleDateFormat("EEEE", Locale.getDefault()).format(date);
-            }
-            else {
-                day = "Today";
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        holder.tv_day_name.setText(day);
+        holder.tv_day_name.setText(sDate);
         holder.tv_condition_text.setText(forecastDay.getDay().getCondition().getText());
         holder.tv_temp_c.setText(forecastDay.getDay().getAvg_tempC() + "\u00B0C");
 
