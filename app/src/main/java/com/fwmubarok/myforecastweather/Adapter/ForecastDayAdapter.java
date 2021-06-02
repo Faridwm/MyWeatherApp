@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.ListViewHolder> {
-    private final int item_count = 4;
+    private final int item_count = 8;
 
     private List<ForecastDay> forecastDays;
 //    private Activity activity;
