@@ -30,7 +30,6 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
 //    private Activity activity;
     private String city;
 
-
     public ForecastDayAdapter(List<ForecastDay> forecastDays) {
         this.forecastDays = forecastDays;
     }
