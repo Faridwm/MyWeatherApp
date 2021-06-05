@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private WeatherData weatherData;
 
     //Text View
-    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update;
+    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update, tv_co, tv_no2, tv_o3, tv_so2, tv_pm25, tv_pm10;
 
     //Image View
     private ImageView im_current_condition_icon;
@@ -64,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
         tv_condition_text = findViewById(R.id.current_condition_text);
         tv_temp = findViewById(R.id.current_temp_c);
         tv_last_update = findViewById(R.id.current_last_update);
+        tv_co = findViewById(R.id.current_co);
+        tv_no2 = findViewById(R.id.current_no2);
+        tv_o3 = findViewById(R.id.current_o3);
+        tv_so2 = findViewById(R.id.current_so2);
+        tv_pm25 = findViewById(R.id.current_pm25);
+        tv_pm10 = findViewById(R.id.current_pm10);
 
         im_current_condition_icon = findViewById(R.id.current_condition_icon);
 
@@ -90,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getForecastDay() {
-        Call<ForecastWeather> call = weatherData.getForecastWeather(API_KEY, CITY, 3, "no", "no");
+        Call<ForecastWeather> call = weatherData.getForecastWeather(API_KEY, CITY, 3, "yes", "no");
 
         call.enqueue(new Callback<ForecastWeather>() {
             @Override

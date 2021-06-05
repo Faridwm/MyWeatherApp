@@ -40,6 +40,18 @@ public class Current {
     @Expose
     private double gust_kph;
 
+    @SerializedName("air_quality")
+    @Expose
+    private AirQuality airQuality;
+
+    public AirQuality getAirQuality() {
+        return airQuality;
+    }
+
+    public void setAirQuality(AirQuality airQuality) {
+        this.airQuality = airQuality;
+    }
+
     public String getLast_updated() {
         return last_updated;
     }
