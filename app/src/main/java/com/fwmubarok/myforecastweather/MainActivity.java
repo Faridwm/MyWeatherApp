@@ -102,18 +102,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("DefaultLocale")
     private void upView(ForecastWeather forecastWeather) {
+        String tx = "";
         tv_city.setText(forecastWeather.getLocation().getName());
-        tv_wind.setText(Double.toString(forecastWeather.getCurrent().getWind_kph()));
-        tv_pressure.setText(Double.toString(forecastWeather.getCurrent().getPressure_mb()));
-        tv_precip.setText(Double.toString(forecastWeather.getCurrent().getPrecip_mm()));
-        tv_humidity.setText(Integer.toString(forecastWeather.getCurrent().getHumidity()));
-        tv_cloud.setText(Integer.toString(forecastWeather.getCurrent().getCloud()));
-        tv_gust.setText(Double.toString(forecastWeather.getCurrent().getGust_kph()));
+        tx = Double.toString(forecastWeather.getCurrent().getWind_kph());
+        tv_wind.setText(tx);
+        tx = Double.toString(forecastWeather.getCurrent().getPressure_mb());
+        tv_pressure.setText(tx);
+        tx = Double.toString(forecastWeather.getCurrent().getPrecip_mm());
+        tv_precip.setText(tx);
+        tx = Integer.toString(forecastWeather.getCurrent().getHumidity());
+        tv_humidity.setText(tx);
+        tx = Integer.toString(forecastWeather.getCurrent().getCloud());
+        tv_cloud.setText(tx);
+        tx = Double.toString(forecastWeather.getCurrent().getGust_kph());
+        tv_gust.setText(tx);
         tv_condition_text.setText(forecastWeather.getCurrent().getCondition().getText());
-        tv_temp.setText(forecastWeather.getCurrent().getTemp_c() + "\u00B0C");
+        tx = forecastWeather.getCurrent().getTemp_c() + "\u00B0C";
+        tv_temp.setText(tx);
         tv_last_update.setText(forecastWeather.getCurrent().getLast_updated());
+        tv_co.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getCo()));
+        tv_no2.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getNo2()));
+        tv_o3.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getO3()));
+        tv_so2.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getSo2()));
+        tv_pm25.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getPm25()));
+        tv_pm10.setText(String.format("%.2f\u00B5g/m\u00B3",forecastWeather.getCurrent().getAirQuality().getPm10()));
 
 
         Glide.with(MainActivity.this)
@@ -123,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getForecastDay() {
-        Call<ForecastWeather> call = weatherApiInterface.getForecastWeather(API_KEY, CITY, 3, "no", "no");
-        
+        Call<ForecastWeather> call = weatherApiInterface.getForecastWeather(API_KEY, CITY, 3, "yes", "no");
+
         call.enqueue(new Callback<ForecastWeather>() {
             @Override
             public void onResponse(Call<ForecastWeather> call, Response<ForecastWeather> response) {
