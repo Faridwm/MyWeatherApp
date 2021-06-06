@@ -37,6 +37,7 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
     //EXTRA
     public static final String EXTRA_FORECAST_DAY = "extra_forecast_day";
     public static final String EXTRA_CITY = "extra_city";
+    public static final String EXTRA_POSITION = "extra_position";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,20 +64,24 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
 
         tv_city.setText(getIntent().getStringExtra(EXTRA_CITY));
         String sDate = forecastDay.getDate();
-        String day = null;
+        String day;
+        int position = getIntent().getIntExtra(EXTRA_POSITION, 0);
+        Date date = null;
         try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
-            Date nDate = new Date();
-            if (nDate.compareTo(date) != 1) {
-                day = new SimpleDateFormat("EEEE", Locale.getDefault()).format(date);
-            }
-            else {
-                day = "Today";
-            }
-
+            date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(sDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        if (position == 0) {
+            day = "Yesterday";
+        }
+        else if (position == 1) {
+            day = "Today";
+        }
+        else {
+            day = new SimpleDateFormat("EEEE", Locale.getDefault()).format(date);
+        }
+
 
         tv_day_name.setText(day);
         tv_con_text.setText(forecastDay.getDay().getCondition().getText());
