@@ -30,4 +30,5 @@
     <string name="pm2_5">pm2.5</string>
     <string name="pm10">pm10</string>
     <string name="o3">O<sub>3</sub></string>
+    <string name="aqi_message">Aqi Message</string>
 </resources>

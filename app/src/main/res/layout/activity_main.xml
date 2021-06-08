@@ -332,12 +332,13 @@
                     />
 
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/aqi_msg"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="68dp"
-                    android:layout_marginTop="24dp"
-                    android:text="TextView"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/aqi_message"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/curr_aqi_bar" />
 

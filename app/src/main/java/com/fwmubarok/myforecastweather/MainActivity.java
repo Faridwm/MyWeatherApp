@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private WeatherApiInterface weatherApiInterface;
 
     //Text View
-    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update, tv_co, tv_no2, tv_o3, tv_so2, tv_pm25, tv_pm10, tv_curr_date;
+    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update, tv_co, tv_no2, tv_o3, tv_so2, tv_pm25, tv_pm10, tv_curr_date, tv_aqi_msg;
 
     //Image View
     private ImageView im_current_condition_icon, im_aqi_bar;
@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         tv_pm25 = findViewById(R.id.current_pm25);
         tv_pm10 = findViewById(R.id.current_pm10);
         tv_curr_date = findViewById(R.id.current_date);
+        tv_aqi_msg = findViewById(R.id.aqi_msg);
 
         im_current_condition_icon = findViewById(R.id.current_condition_icon);
         im_aqi_bar = findViewById(R.id.curr_aqi_bar);
@@ -155,29 +156,37 @@ public class MainActivity extends AppCompatActivity {
         showRecyclerList();
 
         int aqi_us = forecastWeather.getCurrent().getAirQuality().getUsEpaIndex();
-//        int aqi_us = 1;
+//        int aqi_us = 3;
         int aqi_bar = 1;
+        String aqi_ms = "";
         switch (aqi_us) {
             case 1:
                 aqi_bar = R.drawable.aqi1;
+                aqi_ms = "Good";
                 break;
             case 2:
                 aqi_bar = R.drawable.aqi2;
+                aqi_ms = "Moderate";
                 break;
             case 3:
                 aqi_bar = R.drawable.aqi3;
+                aqi_ms = "Unhealthy for sensitive group";
                 break;
             case 4:
                 aqi_bar = R.drawable.aqi4;
+                aqi_ms = "Unhealthy";
                 break;
             case 5:
                 aqi_bar= R.drawable.aqi5;
+                aqi_ms = "Very Unhealthy";
                 break;
             case 6:
                 aqi_bar = R.drawable.aqi6;
+                aqi_ms = "Hazardous";
                 break;
         }
 
+        tv_aqi_msg.setText(aqi_ms);
         Glide.with(MainActivity.this)
                 .load(aqi_bar)
                 .into(im_aqi_bar);
