@@ -20,6 +20,7 @@ import com.fwmubarok.myforecastweather.Model.HistoryWeather;
 import com.fwmubarok.myforecastweather.My_interface.WeatherApiInterface;
 import com.fwmubarok.myforecastweather.REST.ApiClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
     private WeatherApiInterface weatherApiInterface;
 
     //Text View
-    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update, tv_co, tv_no2, tv_o3, tv_so2, tv_pm25, tv_pm10;
+    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update, tv_co, tv_no2, tv_o3, tv_so2, tv_pm25, tv_pm10, tv_curr_date;
 
     //Image View
-    private ImageView im_current_condition_icon;
+    private ImageView im_current_condition_icon, im_aqi_bar;
 
     //Recycle View
     private RecyclerView rv_forecast_days;
@@ -76,8 +77,10 @@ public class MainActivity extends AppCompatActivity {
         tv_so2 = findViewById(R.id.current_so2);
         tv_pm25 = findViewById(R.id.current_pm25);
         tv_pm10 = findViewById(R.id.current_pm10);
+        tv_curr_date = findViewById(R.id.current_date);
 
         im_current_condition_icon = findViewById(R.id.current_condition_icon);
+        im_aqi_bar = findViewById(R.id.curr_aqi_bar);
 
         rv_forecast_days = findViewById(R.id.rv_forecast_days);
         rv_forecast_days.setHasFixedSize(true);
@@ -106,34 +109,80 @@ public class MainActivity extends AppCompatActivity {
     private void upView(ForecastWeather forecastWeather) {
         String tx = "";
         tv_city.setText(forecastWeather.getLocation().getName());
-        tx = Double.toString(forecastWeather.getCurrent().getWind_kph());
+        tx = ": " + forecastWeather.getCurrent().getWind_kph() + " kph";
         tv_wind.setText(tx);
-        tx = Double.toString(forecastWeather.getCurrent().getPressure_mb());
+        tx = ": " + forecastWeather.getCurrent().getPressure_mb() + " in";
         tv_pressure.setText(tx);
-        tx = Double.toString(forecastWeather.getCurrent().getPrecip_mm());
+        tx = ": " + forecastWeather.getCurrent().getPrecip_mm() + " mm";
         tv_precip.setText(tx);
-        tx = Integer.toString(forecastWeather.getCurrent().getHumidity());
+        tx = ": " + forecastWeather.getCurrent().getHumidity() + "%";
         tv_humidity.setText(tx);
-        tx = Integer.toString(forecastWeather.getCurrent().getCloud());
+        tx = ": " + forecastWeather.getCurrent().getCloud() + "%";
         tv_cloud.setText(tx);
-        tx = Double.toString(forecastWeather.getCurrent().getGust_kph());
+        tx = ": " + forecastWeather.getCurrent().getGust_kph() + " kph";
         tv_gust.setText(tx);
         tv_condition_text.setText(forecastWeather.getCurrent().getCondition().getText());
         tx = forecastWeather.getCurrent().getTemp_c() + "\u00B0C";
         tv_temp.setText(tx);
-        tv_last_update.setText(forecastWeather.getCurrent().getLast_updated());
-        tv_co.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getCo()));
-        tv_no2.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getNo2()));
-        tv_o3.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getO3()));
-        tv_so2.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getSo2()));
-        tv_pm25.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getPm25()));
-        tv_pm10.setText(String.format("%.2f\u00B5g/m\u00B3",forecastWeather.getCurrent().getAirQuality().getPm10()));
+        tv_co.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getCo()));
+        tv_no2.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getNo2()));
+        tv_o3.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getO3()));
+        tv_so2.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getSo2()));
+        tv_pm25.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getPm25()));
+        tv_pm10.setText(String.format(": %.2f\u00B5g/m\u00B3",forecastWeather.getCurrent().getAirQuality().getPm10()));
 
+        String sDate = forecastWeather.getCurrent().getLast_updated();
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(sDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String lu = new SimpleDateFormat("dd MMM HH:mm", Locale.getDefault()).format(date);
+
+        tv_last_update.setText(lu);
+
+        date = new Date();
+
+        String nDate = new SimpleDateFormat("EEE, dd MMM HH:mm", Locale.getDefault()).format(date);
+
+        tv_curr_date.setText(nDate);
 
         Glide.with(MainActivity.this)
                 .load("https:" + forecastWeather.getCurrent().getCondition().getIcon())
                 .into(im_current_condition_icon);
         showRecyclerList();
+
+        int aqi_us = forecastWeather.getCurrent().getAirQuality().getUsEpaIndex();
+//        int aqi_us = 1;
+        int aqi_bar = 1;
+        switch (aqi_us) {
+            case 1:
+                aqi_bar = R.drawable.aqi1;
+                break;
+            case 2:
+                aqi_bar = R.drawable.aqi2;
+                break;
+            case 3:
+                aqi_bar = R.drawable.aqi3;
+                break;
+            case 4:
+                aqi_bar = R.drawable.aqi4;
+                break;
+            case 5:
+                aqi_bar= R.drawable.aqi5;
+                break;
+            case 6:
+                aqi_bar = R.drawable.aqi6;
+                break;
+        }
+
+        Glide.with(MainActivity.this)
+                .load(aqi_bar)
+                .into(im_aqi_bar);
+        showRecyclerList();
+
     }
 
     private void getForecastDay() {
