@@ -17,7 +17,7 @@
             android:id="@+id/layout_get_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -441,7 +441,7 @@
             android:id="@+id/layout_error_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="80dp">
 
