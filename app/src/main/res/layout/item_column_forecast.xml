@@ -9,7 +9,7 @@
     >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="100dp"
+        android:layout_width="85dp"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -21,9 +21,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textStyle="bold"
+                android:text="@string/day_name"
                 android:textSize="15sp"
-                android:text="@string/day_name" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/img_forecast_condition_icon"
@@ -35,20 +35,21 @@
             <TextView
                 android:id="@+id/tv_forecast_condition_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="12sp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/img_forecast_condition_icon"
-                android:text="@string/condition_text" />
+                android:gravity="center"
+                android:text="@string/condition_text"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_forecast_temp_c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="12sp"
                 android:layout_below="@+id/tv_forecast_condition_text"
-                android:text="@string/temp_c" />
+                android:gravity="center"
+                android:text="@string/temp_c"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
