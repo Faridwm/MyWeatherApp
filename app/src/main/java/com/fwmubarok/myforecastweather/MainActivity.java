@@ -1,6 +1,7 @@
 package com.fwmubarok.myforecastweather;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -9,7 +10,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -45,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
     private WeatherApiInterface weatherApiInterface;
 
     //Text View
-    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud, tv_gust, tv_condition_text, tv_temp, tv_last_update, tv_co, tv_no2, tv_o3, tv_so2, tv_pm25, tv_pm10, tv_curr_date, tv_aqi_msg;
+    private TextView tv_city, tv_wind, tv_pressure, tv_precip, tv_humidity, tv_cloud,
+            tv_gust, tv_condition_text, tv_temp, tv_last_update, tv_co, tv_no2, tv_o3,
+            tv_so2, tv_pm25, tv_pm10, tv_curr_date, tv_aqi_msg, tv_err_code, tv_err_msg;
 
     //Image View
     private ImageView im_current_condition_icon, im_aqi_bar;
@@ -56,11 +62,27 @@ public class MainActivity extends AppCompatActivity {
     //Swipe
     private SwipeRefreshLayout swipe_c;
 
+    //Progress Bar
+    private ProgressBar prg_loader;
+
+    //layout
+    private ConstraintLayout layout_loader;
+    private ConstraintLayout layout_error;
+    private ScrollView layout_get;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        layout_loader = findViewById(R.id.layout_loader);
+        layout_loader.setVisibility(View.VISIBLE);
+        layout_get = findViewById(R.id.layout_get_data);
+        layout_get.setVisibility(View.GONE);
+        layout_error = findViewById(R.id.layout_error_data);
+        layout_error.setVisibility(View.GONE);
+
+        //Get Data Layout Elemen
         tv_city = findViewById(R.id.current_city);
         tv_wind = findViewById(R.id.current_wind_kph);
         tv_pressure = findViewById(R.id.current_pressure_mb);
@@ -85,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
 
         rv_forecast_days = findViewById(R.id.rv_forecast_days);
         rv_forecast_days.setHasFixedSize(true);
+
+        //Error data Layout Elemen
+        tv_err_code = findViewById(R.id.tv_err_code);
+        tv_err_msg = findViewById(R.id.tv_err_message);
 
         swipe_c = findViewById(R.id.swipe_container);
 
@@ -190,8 +216,6 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(MainActivity.this)
                 .load(aqi_bar)
                 .into(im_aqi_bar);
-        showRecyclerList();
-
     }
 
     private void getForecastDay() {
@@ -202,12 +226,21 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ForecastWeather> call, Response<ForecastWeather> response) {
                 if (!response.isSuccessful()){
                     Log.d(TAG, "Code: " + response.code());
+                    layout_loader.setVisibility(View.GONE);
+                    layout_get.setVisibility(View.GONE);
+                    layout_error.setVisibility(View.VISIBLE);
+                    String cd = Integer.toString(response.code());
+                    tv_err_code.setText(cd);
+                    tv_err_msg.setText(response.message());
                     return;
                 }
 
                 forecastWeather = response.body();
                 list_forecast_days.addAll(forecastWeather.getForecast().getForecastDay());
                 upView(forecastWeather);
+                layout_loader.setVisibility(View.GONE);
+                layout_error.setVisibility(View.GONE);
+                layout_get.setVisibility(View.VISIBLE);
                 Log.d("panjang list", Integer.toString(list_forecast_days.size()));
 
             }
@@ -215,11 +248,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ForecastWeather> call, Throwable t) {
                 Log.d(TAG, "Message: " + t.getMessage());
+                layout_loader.setVisibility(View.GONE);
+                layout_get.setVisibility(View.GONE);
+                layout_error.setVisibility(View.VISIBLE);
+                String cd = "500";
+                tv_err_code.setText(cd);
+                tv_err_msg.setText(t.getMessage());
+
             }
         });
     }
 
     private void updateForecastDay() {
+        layout_loader.setVisibility(View.GONE);
+        layout_get.setVisibility(View.GONE);
+        layout_error.setVisibility(View.GONE);
         list_forecast_days.clear();
         forecastDayAdapter.clear();
         getHistoryDay();
@@ -237,6 +280,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<HistoryWeather> call, Response<HistoryWeather> response) {
                 if (!response.isSuccessful()){
                     Log.d(TAG, "Code: " + response.code());
+                    layout_loader.setVisibility(View.GONE);
+                    layout_get.setVisibility(View.GONE);
+                    layout_error.setVisibility(View.VISIBLE);
+                    String cd = Integer.toString(response.code());
+                    tv_err_code.setText(cd);
+                    tv_err_msg.setText(response.message());
                     return;
                 }
                 list_forecast_days.add(0, response.body().getForecast().getForecastDay().get(0));
@@ -246,6 +295,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<HistoryWeather> call, Throwable t) {
                 Log.d(TAG, "Message: " + t.getMessage());
+                layout_loader.setVisibility(View.GONE);
+                layout_get.setVisibility(View.GONE);
+                layout_error.setVisibility(View.VISIBLE);
+                tv_err_msg.setText(t.getMessage());
             }
         });
     }

@@ -31,4 +31,9 @@
     <string name="pm10">pm10</string>
     <string name="o3">O<sub>3</sub></string>
     <string name="aqi_message">Aqi Message</string>
+    <string name="loading">Loading</string>
+    <string name="code">Code</string>
+    <string name="error">Error</string>
+    <string name="message">Message</string>
+    <string name="error_code">Error Code</string>
 </resources>
