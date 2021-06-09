@@ -82,9 +82,12 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
             day = new SimpleDateFormat("EEEE", Locale.getDefault()).format(date);
         }
 
+        String tgl = new SimpleDateFormat("dd MMM", Locale.getDefault()).format(date);
+
         holder.tv_day_name.setText(day);
         holder.tv_condition_text.setText(forecastDay.getDay().getCondition().getText());
-        holder.tv_temp_c.setText(forecastDay.getDay().getAvg_tempC() + "\u00B0C");
+        String tx = forecastDay.getDay().getAvg_tempC() + "\u00B0C";
+        holder.tv_temp_c.setText(tx);
 
         Glide.with(holder.itemView.getContext())
                 .load("https:" + forecastDay.getDay().getCondition().getIcon())
@@ -96,6 +99,7 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
             intent.putExtra(ForecastWeatherDayActivity.EXTRA_FORECAST_DAY, forecastDays.get(position1));
             intent.putExtra(ForecastWeatherDayActivity.EXTRA_CITY, getCity());
             intent.putExtra(ForecastWeatherDayActivity.EXTRA_POSITION, position);
+            intent.putExtra(ForecastWeatherDayActivity.EXTRA_DATE, tgl);
             holder.itemView.getContext().startActivity(intent);
         }));
     }

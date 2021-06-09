@@ -9,108 +9,89 @@
 
     <ImageView
         android:id="@+id/img_forehour_condition_icon"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_forehour_chance_rain"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tv_forehour_chance_rain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="23dp"
+        android:layout_height="20dp"
         android:layout_marginStart="4dp"
-        android:text="@string/chance_rain"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:text="00%"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/plch_chanceRain"
-        app:layout_constraintTop_toBottomOf="@+id/tv_forehour_feelslike_c" />
-
-    <TextView
-        android:id="@+id/tv_forehour_condition_text"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:text="@string/condition_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_forehour_time" />
-
-    <TextView
-        android:id="@+id/tv_forehour_will_rain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="@string/will_rain"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/plch_willRain"
-        app:layout_constraintTop_toBottomOf="@+id/tv_forehour_chance_rain" />
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_forehour_feelslike_c"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_vertical"
         android:text="@string/temp_c"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/plch_temp_feelslike_c"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_forehour_temp_c" />
+
+    <TextView
+        android:id="@+id/tv_forehour_time"
+        android:layout_width="65dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="@string/time"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_forehour_temp_c"
-        android:layout_width="63dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="90dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
         android:text="@string/temp_c"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/img_forehour_condition_icon"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_forehour_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/time"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/plch_temp_feelslike_c"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="1dp"
+        android:gravity="center_vertical"
         android:text="@string/feelslike"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_forehour_feelslike_c"
+        app:layout_constraintTop_toBottomOf="@+id/tv_forehour_temp_c" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_forehour_time"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chance_rain" />
+
+    <TextView
+        android:id="@+id/tv_forehour_condition_text"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center_vertical"
+        android:text="@string/condition_text"
+        app:layout_constraintStart_toEndOf="@+id/img_forehour_condition_icon"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/plch_chanceRain"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:text="@string/chance_rain"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plch_temp_feelslike_c" />
-
-    <TextView
-        android:id="@+id/plch_willRain"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:text="@string/will_rain"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plch_chanceRain" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

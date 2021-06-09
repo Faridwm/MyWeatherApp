@@ -46,27 +46,22 @@ public class ForecastHourAdapter extends RecyclerView.Adapter<ForecastHourAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+        String tx;
+
         Hour hour = getHours().get(position);
 
         String dt = hour.getTime();
         String[] date_time = dt.split(" ");
         String time_hour = date_time[1];
 
-
-
         holder.tv_time.setText(time_hour);
         holder.tv_cond_text.setText(hour.getCondition().getText());
-        holder.tv_temp_c.setText(hour.getTemp_c() + "\u00B0C");
-        holder.tv_feelslike_c.setText(hour.getFeelslike_c() + "\u00B0C");
-        holder.tv_chance_rain.setText(hour.getChance_of_rain() + "%");
-        String w_rain;
-        if (hour.getWill_it_rain() == 1) {
-            w_rain = "YES";
-        }
-        else {
-            w_rain = "NO";
-        }
-        holder.tv_will_rain.setText(w_rain);
+        tx = hour.getTemp_c() + "\u00B0C";
+        holder.tv_temp_c.setText(tx);
+        tx = hour.getFeelslike_c() + "\u00B0C";
+        holder.tv_feelslike_c.setText(tx);
+        tx = hour.getChance_of_rain() + "%";
+        holder.tv_chance_rain.setText(tx);
 
         Glide.with(holder.itemView.getContext())
                 .load("https:" + hour.getCondition().getIcon())
@@ -81,7 +76,7 @@ public class ForecastHourAdapter extends RecyclerView.Adapter<ForecastHourAdapte
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
         //Text View
-        TextView tv_cond_text, tv_time, tv_temp_c, tv_feelslike_c, tv_chance_rain, tv_will_rain;
+        TextView tv_cond_text, tv_time, tv_temp_c, tv_feelslike_c, tv_chance_rain;
 
         //Image View
         ImageView iv_cond_icon;
@@ -93,7 +88,6 @@ public class ForecastHourAdapter extends RecyclerView.Adapter<ForecastHourAdapte
             tv_temp_c = itemView.findViewById(R.id.tv_forehour_temp_c);
             tv_feelslike_c = itemView.findViewById(R.id.tv_forehour_feelslike_c);
             tv_chance_rain = itemView.findViewById(R.id.tv_forehour_chance_rain);
-            tv_will_rain = itemView.findViewById(R.id.tv_forehour_will_rain);
             iv_cond_icon = itemView.findViewById(R.id.img_forehour_condition_icon);
         }
     }

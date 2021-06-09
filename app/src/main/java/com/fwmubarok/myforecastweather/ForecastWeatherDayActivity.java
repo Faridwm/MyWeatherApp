@@ -30,7 +30,7 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
     private TextView tv_con_text, tv_day_name, tv_city, tv_max_wind, tv_precip_total, tv_temp_c_min_max, tv_temp_c_avg, tv_sunrise, tv_sunset;
 
     //Image View
-    private ImageView iv_con_icon, iv_sunset, iv_sunrise;
+    private ImageView iv_con_icon;
 
     //Recycle View
     private RecyclerView rv_forecast_hour;
@@ -42,6 +42,7 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
     public static final String EXTRA_FORECAST_DAY = "extra_forecast_day";
     public static final String EXTRA_CITY = "extra_city";
     public static final String EXTRA_POSITION = "extra_position";
+    public static final String EXTRA_DATE = "extra_date";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +60,6 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
         tv_sunset = findViewById(R.id.tv_foreday_astro_sunset);
 
         iv_con_icon = findViewById(R.id.img_foreday_condition_icon);
-        iv_sunrise = findViewById(R.id.img_sunrise);
-        iv_sunset = findViewById(R.id.img_sunset);
 
         rv_forecast_hour = findViewById(R.id.rv_forecast_hours);
         rv_forecast_hour.setHasFixedSize(true);
@@ -90,9 +89,10 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
             day = new SimpleDateFormat("EEEE", Locale.getDefault()).format(date);
         }
 
-        String tx = "";
+        String tx;
 
-        tv_day_name.setText(day);
+        tx = day + ", " + getIntent().getStringExtra(EXTRA_DATE);
+        tv_day_name.setText(tx);
         tv_con_text.setText(forecastDay.getDay().getCondition().getText());
         tx = forecastDay.getDay().getMaxwind_kph() + " kph";
         tv_max_wind.setText(tx);
@@ -109,7 +109,7 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        amPm_to_24 = ": " + new SimpleDateFormat("HH:mm", Locale.getDefault()).format(date);
+        amPm_to_24 = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(date);
         tv_sunrise.setText(amPm_to_24);
 
         amPm_to_24 = forecastDay.getAstro().getSunset();
@@ -118,21 +118,12 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        amPm_to_24 = ": " + new SimpleDateFormat("HH:mm", Locale.getDefault()).format(date);
+        amPm_to_24 = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(date);
         tv_sunset.setText(amPm_to_24);
 
         Glide.with(ForecastWeatherDayActivity.this)
                 .load("https:" + forecastDay.getDay().getCondition().getIcon())
                 .into(iv_con_icon);
-
-        Glide.with(ForecastWeatherDayActivity.this)
-                .load(R.drawable.sunrise)
-                .into(iv_sunrise);
-
-        Glide.with(ForecastWeatherDayActivity.this)
-                .load(R.drawable.sunset)
-                .into(iv_sunset);
-
         list_hour = forecastDay.getHour();
         showRecyclerList();
     }
