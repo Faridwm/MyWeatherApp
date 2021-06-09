@@ -62,9 +62,6 @@ public class MainActivity extends AppCompatActivity {
     //Swipe
     private SwipeRefreshLayout swipe_c;
 
-    //Progress Bar
-    private ProgressBar prg_loader;
-
     //layout
     private ConstraintLayout layout_loader;
     private ConstraintLayout layout_error;
@@ -116,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
 
         weatherApiInterface = ApiClient.getClient().create(WeatherApiInterface.class);
         getHistoryDay();
-        showRecyclerList();
-
+//        showRecyclerList();
+        
         swipe_c.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -151,12 +148,12 @@ public class MainActivity extends AppCompatActivity {
         tv_condition_text.setText(forecastWeather.getCurrent().getCondition().getText());
         tx = forecastWeather.getCurrent().getTemp_c() + "\u00B0C";
         tv_temp.setText(tx);
-        tv_co.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getCo()));
-        tv_no2.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getNo2()));
-        tv_o3.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getO3()));
-        tv_so2.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getSo2()));
-        tv_pm25.setText(String.format(": %.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getPm25()));
-        tv_pm10.setText(String.format(": %.2f\u00B5g/m\u00B3",forecastWeather.getCurrent().getAirQuality().getPm10()));
+        tv_co.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getCo()));
+        tv_no2.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getNo2()));
+        tv_o3.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getO3()));
+        tv_so2.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getSo2()));
+        tv_pm25.setText(String.format("%.2f\u00B5g/m\u00B3", forecastWeather.getCurrent().getAirQuality().getPm25()));
+        tv_pm10.setText(String.format("%.2f\u00B5g/m\u00B3",forecastWeather.getCurrent().getAirQuality().getPm10()));
 
         String sDate = forecastWeather.getCurrent().getLast_updated();
         Date date = null;

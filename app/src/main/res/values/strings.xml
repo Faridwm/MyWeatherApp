@@ -36,4 +36,6 @@
     <string name="error">Error</string>
     <string name="message">Message</string>
     <string name="error_code">Error Code</string>
+    <string name="based_aqi">Based on US - EPA standard.</string>
+    <string name="aqi">Air Quality Index</string>
 </resources>

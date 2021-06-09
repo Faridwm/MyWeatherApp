@@ -16,240 +16,267 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_forecast_day"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/dark_sky_blue">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layout_forecast_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tv_foreday_temp_c_avg"
-                    android:layout_width="100dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="80dp"
-                    android:layout_marginEnd="32dp"
-                    android:gravity="center"
-                    android:text="@string/temp_c"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tv_foreday_temp_c_min_max"
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="32dp"
-                    android:gravity="center"
-                    android:text="@string/temp_c"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_foreday_temp_c_avg" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_info_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tv_foreday_city"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center"
-                    android:text="@string/city"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tv_foreday_temp_c_avg"
+                            android:layout_width="100dp"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="68dp"
+                            android:layout_marginEnd="32dp"
+                            android:gravity="center"
+                            android:text="@string/temp_c"
+                            android:textSize="30sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/img_foreday_condition_icon"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="80dp"
-                    android:contentDescription="@string/todo"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                        <TextView
+                            android:id="@+id/tv_foreday_temp_c_min_max"
+                            android:layout_width="100dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="32dp"
+                            android:gravity="center"
+                            android:text="@string/temp_c"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_foreday_temp_c_avg" />
 
-                <TextView
-                    android:id="@+id/tv_foreday_day_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/day_name"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_foreday_city" />
+                        <TextView
+                            android:id="@+id/tv_foreday_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center"
+                            android:text="@string/city"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_foreday_condition_text"
-                    android:layout_width="130dp"
-                    android:layout_height="75dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="80dp"
-                    android:gravity="start|center_vertical"
-                    android:text="@string/condition_text"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/img_foreday_condition_icon"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/img_foreday_condition_icon"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="68dp"
+                            android:contentDescription="@string/todo"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@tools:sample/avatars" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_foreday_day_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/day_name"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_foreday_city" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+                        <TextView
+                            android:id="@+id/tv_foreday_condition_text"
+                            android:layout_width="130dp"
+                            android:layout_height="75dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="68dp"
+                            android:gravity="start|center_vertical"
+                            android:text="@string/condition_text"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@+id/img_foreday_condition_icon"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/img_wind"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="62dp"
-                    app:layout_constraintStart_toEndOf="@+id/img_sunset"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10"
-                    app:srcCompat="@drawable/wind" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/img_precip"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="61dp"
-                    app:layout_constraintStart_toEndOf="@+id/img_wind"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9"
-                    app:srcCompat="@drawable/precipitation" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_info_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_info_a">
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:text="@string/wind"
-                    app:layout_constraintStart_toEndOf="@+id/textView2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/img_wind"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="62dp"
+                            app:layout_constraintStart_toEndOf="@+id/img_sunset"
+                            app:layout_constraintTop_toBottomOf="@+id/textView10"
+                            app:srcCompat="@drawable/wind" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:text="@string/precipation"
-                    app:layout_constraintStart_toEndOf="@+id/textView10"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/img_precip"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="61dp"
+                            app:layout_constraintStart_toEndOf="@+id/img_wind"
+                            app:layout_constraintTop_toBottomOf="@+id/textView9"
+                            app:srcCompat="@drawable/precipitation" />
 
-                <TextView
-                    android:id="@+id/tv_foreday_astro_sunset"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:text="@string/sunset"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_foreday_astro_sunrise"
-                    app:layout_constraintTop_toBottomOf="@+id/img_sunset" />
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="@string/wind"
+                            app:layout_constraintStart_toEndOf="@+id/textView2"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_foreday_astro_sunrise"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:text="@string/sunrise"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_sunrise" />
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="@string/precipation"
+                            app:layout_constraintStart_toEndOf="@+id/textView10"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:text="@string/sunrise"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tv_foreday_astro_sunset"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:text="@string/sunset"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tv_foreday_astro_sunrise"
+                            app:layout_constraintTop_toBottomOf="@+id/img_sunset" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:text="@string/sunset"
-                    app:layout_constraintStart_toEndOf="@+id/textView"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tv_foreday_astro_sunrise"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:text="@string/sunrise"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/img_sunrise" />
 
-                <ImageView
-                    android:id="@+id/img_sunrise"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="47dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView"
-                    app:srcCompat="@drawable/sunrise" />
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="@string/sunrise"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/img_sunset"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="60dp"
-                    app:layout_constraintStart_toEndOf="@+id/img_sunrise"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2"
-                    app:srcCompat="@drawable/sunset" />
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="@string/sunset"
+                            app:layout_constraintStart_toEndOf="@+id/textView"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_foreday_precip_total"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:text="@string/precip_mm"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_foreday_maxwind_kph"
-                    app:layout_constraintTop_toBottomOf="@+id/img_precip" />
+                        <ImageView
+                            android:id="@+id/img_sunrise"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="35dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView"
+                            app:srcCompat="@drawable/sunrise" />
 
-                <TextView
-                    android:id="@+id/tv_foreday_maxwind_kph"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:text="@string/wind_kph"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_foreday_astro_sunset"
-                    app:layout_constraintTop_toBottomOf="@+id/img_wind" />
+                        <ImageView
+                            android:id="@+id/img_sunset"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="60dp"
+                            app:layout_constraintStart_toEndOf="@+id/img_sunrise"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2"
+                            app:srcCompat="@drawable/sunset" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_foreday_precip_total"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:text="@string/precip_mm"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tv_foreday_maxwind_kph"
+                            app:layout_constraintTop_toBottomOf="@+id/img_precip" />
+
+                        <TextView
+                            android:id="@+id/tv_foreday_maxwind_kph"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:text="@string/wind_kph"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tv_foreday_astro_sunset"
+                            app:layout_constraintTop_toBottomOf="@+id/img_wind" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_forecast_hours"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/layout_forecast_detail"
                 tools:listitem="@layout/item_row_forecast_hour" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
