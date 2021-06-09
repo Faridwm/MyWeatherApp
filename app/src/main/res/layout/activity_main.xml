@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:background="@color/dark_sky_blue">
 
         <ScrollView
             android:id="@+id/layout_get_data"
@@ -20,245 +20,310 @@
             android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_get_data_constraint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/layout_current_weather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.476"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <!--                <TextView-->
-                    <!--                    android:id="@+id/plch_current"-->
-                    <!--                    android:layout_width="wrap_content"-->
-                    <!--                    android:layout_height="wrap_content"-->
-                    <!--                    android:text="@string/current"-->
-                    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                    <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                    app:layout_constraintTop_toTopOf="parent"-->
-                    <!--                    app:layout_constraintVertical_bias="0.075" />-->
-
-                    <TextView
-                        android:id="@+id/plch_wind"
-                        android:layout_width="80dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="216dp"
-                        android:layout_marginTop="72dp"
-                        android:text="@string/wind"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/plch_pressure"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="216dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/pressure"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plch_wind" />
-
-                    <TextView
-                        android:id="@+id/plch_precip"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="216dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/precipation"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plch_pressure" />
-
-                    <TextView
-                        android:id="@+id/plch_humidity"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="216dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/humidity"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plch_precip" />
-
-                    <TextView
-                        android:id="@+id/plch_cloud"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="216dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/cloud"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plch_humidity" />
-
-                    <TextView
-                        android:id="@+id/plch_gust"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="216dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/gust"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plch_cloud" />
-
-                    <TextView
-                        android:id="@+id/current_wind_kph"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="72dp"
-                        android:text="@string/wind_kph"
-                        app:layout_constraintStart_toEndOf="@+id/plch_wind"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/current_precip_mm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/precip_mm"
-                        app:layout_constraintStart_toEndOf="@+id/plch_precip"
-                        app:layout_constraintTop_toBottomOf="@+id/current_pressure_mb" />
-
-                    <TextView
-                        android:id="@+id/current_humidity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/humidity"
-                        app:layout_constraintStart_toEndOf="@+id/plch_humidity"
-                        app:layout_constraintTop_toBottomOf="@+id/current_precip_mm" />
-
-                    <TextView
-                        android:id="@+id/current_cloud"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/cloud"
-                        app:layout_constraintStart_toEndOf="@+id/plch_cloud"
-                        app:layout_constraintTop_toBottomOf="@+id/current_humidity" />
-
-                    <TextView
-                        android:id="@+id/current_gust_kph"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/gust_kph"
-                        app:layout_constraintStart_toEndOf="@+id/plch_gust"
-                        app:layout_constraintTop_toBottomOf="@+id/current_cloud" />
-
-                    <TextView
-                        android:id="@+id/current_pressure_mb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/pressure_mb"
-                        app:layout_constraintStart_toEndOf="@+id/plch_pressure"
-                        app:layout_constraintTop_toBottomOf="@+id/current_wind_kph" />
-
-                    <ImageView
-                        android:id="@+id/current_condition_icon"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="112dp"
-                        android:contentDescription="@string/todo"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/current_condition_text"
-                        android:layout_width="99dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="76dp"
-                        android:text="@string/condition_text"
-                        android:textSize="15sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/current_temp_c" />
-
-                    <TextView
-                        android:id="@+id/current_temp_c"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="112dp"
-                        android:text="@string/temp_c"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/current_condition_icon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/plch_last_update"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="72dp"
-                        android:text="Last Update"
-                        android:textSize="10sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/current_last_update"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
-                        android:text="@string/last_update"
-                        android:textSize="10sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plch_last_update" />
-
-                    <TextView
-                        android:id="@+id/current_city"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/city"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/current_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/date"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/current_city" />
+                        <TextView
+                            android:id="@+id/plch_wind"
+                            android:layout_width="75dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="72dp"
+                            android:text="@string/wind"
+                            app:layout_constraintEnd_toStartOf="@+id/current_wind_kph"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/plch_pressure"
+                            android:layout_width="75dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/pressure"
+                            app:layout_constraintEnd_toStartOf="@+id/current_pressure_mb"
+                            app:layout_constraintTop_toBottomOf="@+id/plch_wind" />
+
+                        <TextView
+                            android:id="@+id/plch_precip"
+                            android:layout_width="75dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/precipation"
+                            app:layout_constraintEnd_toStartOf="@+id/current_precip_mm"
+                            app:layout_constraintTop_toBottomOf="@+id/plch_pressure" />
+
+                        <TextView
+                            android:id="@+id/plch_humidity"
+                            android:layout_width="75dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/humidity"
+                            app:layout_constraintEnd_toStartOf="@+id/current_humidity"
+                            app:layout_constraintTop_toBottomOf="@+id/plch_precip" />
+
+                        <TextView
+                            android:id="@+id/plch_cloud"
+                            android:layout_width="75dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/cloud"
+                            app:layout_constraintEnd_toStartOf="@+id/current_cloud"
+                            app:layout_constraintTop_toBottomOf="@+id/plch_humidity" />
+
+                        <TextView
+                            android:id="@+id/plch_gust"
+                            android:layout_width="75dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/gust"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/current_gust_kph"
+                            app:layout_constraintTop_toBottomOf="@+id/plch_cloud" />
+
+                        <TextView
+                            android:id="@+id/current_wind_kph"
+                            android:layout_width="85dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="72dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/wind_kph"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/current_precip_mm"
+                            android:layout_width="85dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/precip_mm"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_pressure_mb" />
+
+                        <TextView
+                            android:id="@+id/current_humidity"
+                            android:layout_width="85dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/humidity"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_precip_mm" />
+
+                        <TextView
+                            android:id="@+id/current_cloud"
+                            android:layout_width="85dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/cloud"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_humidity" />
+
+                        <TextView
+                            android:id="@+id/current_gust_kph"
+                            android:layout_width="85dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/gust_kph"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_cloud" />
+
+                        <TextView
+                            android:id="@+id/current_pressure_mb"
+                            android:layout_width="85dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/pressure_mb"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_wind_kph" />
+
+                        <ImageView
+                            android:id="@+id/current_condition_icon"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="112dp"
+                            android:contentDescription="@string/todo"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/current_condition_text"
+                            android:layout_width="99dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="76dp"
+                            android:text="@string/condition_text"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_temp_c" />
+
+                        <TextView
+                            android:id="@+id/current_temp_c"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="112dp"
+                            android:text="@string/temp_c"
+                            android:textSize="30sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@+id/current_condition_icon"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/plch_last_update"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="72dp"
+                            android:text="Last Update"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/current_last_update"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/last_update"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/plch_last_update" />
+
+                        <TextView
+                            android:id="@+id/current_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/city"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/current_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/current_city" />
+
+                        <ImageView
+                            android:id="@+id/img_curr_wind"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="72dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/plch_wind"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/wind" />
+
+                        <ImageView
+                            android:id="@+id/img_curr_press"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/plch_pressure"
+                            app:layout_constraintTop_toBottomOf="@+id/img_curr_wind"
+                            app:srcCompat="@drawable/pressure" />
+
+                        <ImageView
+                            android:id="@+id/img_curr_precip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/plch_precip"
+                            app:layout_constraintTop_toBottomOf="@+id/img_curr_press"
+                            app:srcCompat="@drawable/precipitation" />
+
+                        <ImageView
+                            android:id="@+id/img_curr_humidity"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/plch_humidity"
+                            app:layout_constraintTop_toBottomOf="@+id/img_curr_precip"
+                            app:srcCompat="@drawable/humidity" />
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/plch_cloud"
+                            app:layout_constraintTop_toBottomOf="@+id/img_curr_humidity"
+                            app:srcCompat="@drawable/cloud" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="24dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/plch_gust"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+                            app:srcCompat="@drawable/gust" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_forecast_days"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_current_weather"
                     tools:listitem="@layout/item_column_forecast" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_aqi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -406,6 +471,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
@@ -413,8 +479,8 @@
             android:id="@+id/layout_loader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            >
+            android:visibility="gone">
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"

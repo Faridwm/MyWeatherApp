@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="sky_blue">#87CEEB</color>
+    <color name="powder_blue">#B6D0E2</color>
+
+    <color name="lapis_lazuli">#336699</color>
+    <color name="cerulean_forest">#5D91B9</color>
+    <color name="dark_sky_blue">#86BBD8</color>
+    <color name="state_gray">#5B8298</color>
+    <color name="charcoal">#2F4858</color>
+    <color name="nyanza">#DAF7DC</color>
 </resources>
