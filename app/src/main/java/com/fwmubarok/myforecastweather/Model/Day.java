@@ -3,36 +3,28 @@ package com.fwmubarok.myforecastweather.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Day implements Parcelable {
     @SerializedName("maxtemp_c")
-    @Expose
     private double max_tempC;
 
     @SerializedName("mintemp_c")
-    @Expose
     private double min_tempC;
 
     @SerializedName("avgtemp_c")
-    @Expose
     private double avg_tempC;
 
     @SerializedName("condition")
-    @Expose
     private Condition condition;
 
     @SerializedName("maxwind_kph")
-    @Expose
     private double maxwind_kph;
 
     @SerializedName("avghumidity")
-    @Expose
     private double avghumidity;
 
     @SerializedName("totalprecip_mm")
-    @Expose
     private double totalprecip_mm;
 
     protected Day(Parcel in) {

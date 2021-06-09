@@ -1,39 +1,30 @@
 package com.fwmubarok.myforecastweather.Model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AirQuality {
     @SerializedName("co")
-    @Expose
     private double co;
 
     @SerializedName("no2")
-    @Expose
     private double no2;
 
     @SerializedName("o3")
-    @Expose
     private double o3;
 
     @SerializedName("so2")
-    @Expose
     private double so2;
 
     @SerializedName("pm2_5")
-    @Expose
     private double pm25;
 
     @SerializedName("pm10")
-    @Expose
     private double pm10;
 
     @SerializedName("us-epa-index")
-    @Expose
     private int usEpaIndex;
 
     @SerializedName("gb-defra-index")
-    @Expose
     private int gbDefraIndex;
 
     public double getCo() {

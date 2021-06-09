@@ -3,56 +3,43 @@ package com.fwmubarok.myforecastweather.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Hour implements Parcelable {
     @SerializedName("time_epoch")
-    @Expose
     private int time_epoch;
 
     @SerializedName("time")
-    @Expose
     private String time;
 
     @SerializedName("temp_c")
-    @Expose
     private double temp_c;
 
     @SerializedName("feelslike_c")
-    @Expose
     private double feelslike_c;
 
     @SerializedName("condition")
-    @Expose
     private Condition condition;
 
     @SerializedName("wind_kph")
-    @Expose
     private double wind_kph;
 
     @SerializedName("precip_mm")
-    @Expose
     private double precip_mm;
 
     @SerializedName("humidity")
-    @Expose
     private int humidity;
 
     @SerializedName("cloud")
-    @Expose
     private int cloud;
 
     @SerializedName("gust_kph")
-    @Expose
     private double gust_kph;
 
     @SerializedName("will_it_rain")
-    @Expose
     private int will_it_rain;
 
     @SerializedName("chance_of_rain")
-    @Expose
     private String chance_of_rain;
 
     protected Hour(Parcel in) {

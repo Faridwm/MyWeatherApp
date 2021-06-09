@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         weatherApiInterface = ApiClient.getClient().create(WeatherApiInterface.class);
         getHistoryDay();
 //        showRecyclerList();
-        
+
         swipe_c.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

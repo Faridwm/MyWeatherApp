@@ -3,18 +3,16 @@ package com.fwmubarok.myforecastweather.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Condition implements Parcelable{
     @SerializedName("text")
-    @Expose
     private String text;
+
     @SerializedName("icon")
-    @Expose
     private String icon;
+
     @SerializedName("code")
-    @Expose
     private int code;
 
     protected Condition(Parcel in) {

@@ -3,30 +3,24 @@ package com.fwmubarok.myforecastweather.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class ForecastDay implements Parcelable {
     @SerializedName("date")
-    @Expose
     private String date;
 
     @SerializedName("date_epoch")
-    @Expose
     private long dateEpoch;
 
     @SerializedName("day")
-    @Expose
     private Day day;
 
     @SerializedName("astro")
-    @Expose
     private Astro astro;
 
     @SerializedName("hour")
-    @Expose
     private List<Hour> hour;
 
     protected ForecastDay(Parcel in) {

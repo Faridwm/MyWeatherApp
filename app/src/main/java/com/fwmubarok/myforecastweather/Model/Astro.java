@@ -3,27 +3,25 @@ package com.fwmubarok.myforecastweather.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Astro implements Parcelable {
     @SerializedName("sunrise")
-    @Expose
     private String sunrise;
+
     @SerializedName("sunset")
-    @Expose
     private String sunset;
+
     @SerializedName("moonrise")
-    @Expose
     private String moonrise;
+
     @SerializedName("moonset")
-    @Expose
     private String moonset;
+
     @SerializedName("moon_phase")
-    @Expose
     private String moon_phase;
+
     @SerializedName("moon_illumination")
-    @Expose
     private String moon_illumination;
 
     protected Astro(Parcel in) {

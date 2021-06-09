@@ -1,14 +1,12 @@
 package com.fwmubarok.myforecastweather.Model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class HistoryWeather {
     @SerializedName("location")
-    @Expose
     private Location location;
+
     @SerializedName("forecast")
-    @Expose
     private Forecast forecast;
 
     public Location getLocation() {

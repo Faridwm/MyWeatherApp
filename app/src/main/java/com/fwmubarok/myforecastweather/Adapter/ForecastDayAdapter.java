@@ -19,6 +19,7 @@ import com.fwmubarok.myforecastweather.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -26,7 +27,7 @@ import java.util.Locale;
 public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.ListViewHolder> {
     private final int item_count = 8;
 
-    private List<ForecastDay> forecastDays;
+    private List<ForecastDay> forecastDays = new ArrayList<>();
 //    private Activity activity;
     private String city;
 
@@ -95,12 +96,14 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
 
         //On Click
         holder.itemView.setOnClickListener(new CustomOnItemClickListener(position, (view, position1) -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ForecastWeatherDayActivity.class);
-            intent.putExtra(ForecastWeatherDayActivity.EXTRA_FORECAST_DAY, forecastDays.get(position1));
-            intent.putExtra(ForecastWeatherDayActivity.EXTRA_CITY, getCity());
-            intent.putExtra(ForecastWeatherDayActivity.EXTRA_POSITION, position);
-            intent.putExtra(ForecastWeatherDayActivity.EXTRA_DATE, tgl);
-            holder.itemView.getContext().startActivity(intent);
+            if (position1 > 0) {
+                Intent intent = new Intent(holder.itemView.getContext(), ForecastWeatherDayActivity.class);
+                intent.putExtra(ForecastWeatherDayActivity.EXTRA_FORECAST_DAY, forecastDays.get(position1));
+                intent.putExtra(ForecastWeatherDayActivity.EXTRA_CITY, getCity());
+                intent.putExtra(ForecastWeatherDayActivity.EXTRA_POSITION, position);
+                intent.putExtra(ForecastWeatherDayActivity.EXTRA_DATE, tgl);
+                holder.itemView.getContext().startActivity(intent);
+            }
         }));
     }
 
@@ -115,8 +118,10 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
     }
 
     public void clear() {
-        forecastDays.clear();
-        notifyDataSetChanged();
+        if (forecastDays.isEmpty()) {
+            forecastDays.clear();
+            notifyDataSetChanged();
+        }
     }
 
     public void addAll(List<ForecastDay> list) {

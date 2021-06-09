@@ -1,47 +1,36 @@
 package com.fwmubarok.myforecastweather.Model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Current {
     @SerializedName("last_updated")
-    @Expose
     private String last_updated;
 
     @SerializedName("temp_c")
-    @Expose
     private double temp_c;
 
     @SerializedName("condition")
-    @Expose
     private Condition condition;
 
     @SerializedName("wind_kph")
-    @Expose
     private double wind_kph;
 
     @SerializedName("pressure_mb")
-    @Expose
     private double pressure_mb;
 
     @SerializedName("precip_mm")
-    @Expose
     private double precip_mm;
 
     @SerializedName("humidity")
-    @Expose
     private int humidity;
 
     @SerializedName("cloud")
-    @Expose
     private int cloud;
 
     @SerializedName("gust_kph")
-    @Expose
     private double gust_kph;
 
     @SerializedName("air_quality")
-    @Expose
     private AirQuality airQuality;
 
     public AirQuality getAirQuality() {

@@ -1,6 +1,7 @@
 package com.fwmubarok.myforecastweather;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -129,12 +130,7 @@ public class ForecastWeatherDayActivity extends AppCompatActivity {
     }
 
     private void showRecyclerList() {
-        rv_forecast_hour.setLayoutManager(new LinearLayoutManager(this) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
+        rv_forecast_hour.setLayoutManager(new LinearLayoutManager(this));
         ForecastHourAdapter forecastHourAdapter = new ForecastHourAdapter(ForecastWeatherDayActivity.this);
         forecastHourAdapter.setHours(list_hour);
         rv_forecast_hour.setAdapter(forecastHourAdapter);

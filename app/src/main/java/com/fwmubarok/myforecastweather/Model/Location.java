@@ -1,39 +1,30 @@
 package com.fwmubarok.myforecastweather.Model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Location {
     @SerializedName("name")
-    @Expose
     private String name;
 
     @SerializedName("region")
-    @Expose
     private String region;
 
     @SerializedName("country")
-    @Expose
     private String country;
 
     @SerializedName("lat")
-    @Expose
     private double lat;
 
     @SerializedName("lon")
-    @Expose
     private double lon;
 
     @SerializedName("tz_id")
-    @Expose
     private String tz_id;
 
     @SerializedName("localtime_epoch")
-    @Expose
     private int localtime_epoch;
 
     @SerializedName("localtime")
-    @Expose
     private String localtime;
 
     public String getName() {
