@@ -257,11 +257,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateForecastDay() {
-        layout_loader.setVisibility(View.GONE);
+        layout_loader.setVisibility(View.VISIBLE);
         layout_get.setVisibility(View.GONE);
         layout_error.setVisibility(View.GONE);
         list_forecast_days.clear();
-        forecastDayAdapter.clear();
+//        forecastDayAdapter.clear();
         getHistoryDay();
 //        getForecastDay();
     }
