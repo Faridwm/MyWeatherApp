@@ -17,7 +17,7 @@
             android:id="@+id/layout_get_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_get_data_constraint"
@@ -548,7 +548,7 @@
             android:id="@+id/layout_loader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ProgressBar
                 android:id="@+id/progressBar"
